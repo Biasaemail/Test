@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Urban Survival - FPS Demo</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* CSS tambahan untuk loading screen sederhana */
+        #loading-screen {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: #111;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2em;
+            z-index: 100; /* Pastikan di atas canvas */
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen">Loading Assets...</div>
+
+    <!-- Canvas untuk rendering Three.js -->
+    <canvas id="game-canvas"></canvas>
+
+    <!-- UI Elements (HUD) -->
+    <div id="hud">
+        <div id="health">Health: 100</div>
+        <div id="stamina">Stamina: 100</div>
+        <div id="ammo">Ammo: 30 / 120</div>
+        <div id="crosshair">+</div>
+        <div id="compass">N</div>
+    </div>
+
+    <!-- Pause Menu (Hidden by default) -->
+    <div id="pause-menu" class="hidden">
+        <h1>Paused</h1>
+        <button id="resume-button">Resume</button>
+        <button>Options</button>
+        <button>Exit</button>
+    </div>
+
+    <!-- Tombol untuk memulai (khususnya di mobile agar audio context bisa aktif) -->
+    <div id="start-screen">
+         <h1>Urban Survival</h1>
+         <p>Click or Tap to Start</p>
+         <button id="start-button">Start Game</button>
+    </div>
+
+    <!-- Libraries (Gunakan versi terbaru atau yang stabil) -->
+    <!-- Pastikan path benar jika diunduh, atau gunakan CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cannon.js/0.6.2/cannon.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
+
+    <!-- Game Logic -->
+    <script src="script.js"></script>
+</body>
+</html>
