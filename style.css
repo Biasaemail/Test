@@ -1,0 +1,150 @@
+/* Reset & Basic Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Mencegah scroll bar */
+    font-family: sans-serif;
+    background-color: #000; /* Background fallback */
+    color: white;
+}
+
+#game-canvas {
+    display: block; /* Mencegah spasi ekstra di bawah canvas */
+    width: 100%;
+    height: 100%;
+}
+
+/* Start Screen */
+#start-screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 110; /* Di atas loading screen */
+    text-align: center;
+}
+
+#start-screen h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+}
+
+#start-screen p {
+    margin-bottom: 30px;
+}
+
+#start-button {
+    padding: 15px 30px;
+    font-size: 1.5em;
+    cursor: pointer;
+    background-color: #555;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+#start-button:hover {
+    background-color: #777;
+}
+
+
+/* HUD Styling */
+#hud {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    color: white;
+    text-shadow: 1px 1px 2px black;
+    pointer-events: none; /* Agar tidak mengganggu klik mouse pada game */
+    z-index: 10;
+    width: calc(100% - 20px); /* Lebar agar compass bisa di kanan */
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+#hud div {
+    margin-right: 20px; /* Jarak antar elemen HUD */
+}
+
+#health, #stamina, #ammo {
+    font-size: 1.2em;
+    background-color: rgba(0,0,0,0.5);
+    padding: 5px;
+    border-radius: 3px;
+}
+
+#crosshair {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.5em;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+#compass {
+    position: absolute; /* Atur posisi compass */
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.2em;
+    background-color: rgba(0,0,0,0.5);
+    padding: 5px 10px;
+    border-radius: 3px;
+}
+
+
+/* Pause Menu Styling */
+#pause-menu {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 40px;
+    border-radius: 10px;
+    text-align: center;
+    z-index: 50;
+}
+
+#pause-menu h1 {
+    margin-bottom: 20px;
+}
+
+#pause-menu button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    font-size: 1.1em;
+    cursor: pointer;
+}
+
+/* Utility Class */
+.hidden {
+    display: none;
+}
+
+/* Responsiveness Dasar (Contoh) */
+@media (max-width: 768px) {
+    #hud div {
+        font-size: 1em; /* Kecilkan font HUD di mobile */
+    }
+     #crosshair {
+         font-size: 2em; /* Crosshair lebih besar agar mudah terlihat */
+     }
+    /* Di sini bisa ditambahkan style untuk virtual joystick/button jika diimplementasikan */
+}
