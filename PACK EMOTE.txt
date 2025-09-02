@@ -1,0 +1,2822 @@
+--- START OF REFACTORED SCRIPT ---
+
+if not game:IsLoaded() then
+	game:GetService("StarterGui"):SetCore("SendNotification", {
+		Title = "Script loading",
+		Text = "Waiting for the game to finish loading!",
+		Duration = 5
+	})
+	game.Loaded:Wait()
+end
+		-- Instances:
+local Converted = {
+	["_AFEMMax"] = Instance.new("ScreenGui");
+	["_FUNCTIONS"] = Instance.new("ModuleScript");
+	["_SBT"] = Instance.new("ModuleScript");
+	["_DraggableObject"] = Instance.new("ModuleScript");
+	["_Init"] = Instance.new("LocalScript");
+	["_Menu"] = Instance.new("Frame");
+	["_UICorner"] = Instance.new("UICorner");
+	["_Branding"] = Instance.new("Frame");
+	["_Icon"] = Instance.new("ImageLabel");
+	["_UIListLayout"] = Instance.new("UIListLayout");
+	["_Naming"] = Instance.new("Frame");
+	["_HoverEffect"] = Instance.new("LocalScript");
+	["_PriorityLine"] = Instance.new("TextLabel");
+	["_UIFlexItem"] = Instance.new("UIFlexItem");
+	["_UIListLayout1"] = Instance.new("UIListLayout");
+	["_Line"] = Instance.new("TextLabel");
+	["_UIFlexItem1"] = Instance.new("UIFlexItem");
+	["_UIGradient"] = Instance.new("UIGradient");
+	["_UISizeConstraint"] = Instance.new("UISizeConstraint");
+	["_Bar"] = Instance.new("ImageButton");
+	["_Tip"] = Instance.new("TextLabel");
+	["_UICorner1"] = Instance.new("UICorner");
+	["_UIPadding"] = Instance.new("UIPadding");
+	["_UIScale"] = Instance.new("UIScale");
+	["_CanvasGroup"] = Instance.new("CanvasGroup");
+	["_UICorner2"] = Instance.new("UICorner");
+	["_Icon1"] = Instance.new("ImageLabel");
+	["_Open"] = Instance.new("TextButton");
+	["_Area"] = Instance.new("Frame");
+	["_UIListLayout2"] = Instance.new("UIListLayout");
+	["_CategorySelect"] = Instance.new("Frame");
+	["_UIFlexItem2"] = Instance.new("UIFlexItem");
+	["_UIListLayout3"] = Instance.new("UIListLayout");
+	["_Emotes"] = Instance.new("TextButton");
+	["_UICorner3"] = Instance.new("UICorner");
+	["_UIPadding1"] = Instance.new("UIPadding");
+	["_Icon2"] = Instance.new("ImageLabel");
+	["_TextLabel"] = Instance.new("TextLabel");
+	["_UIScale1"] = Instance.new("UIScale");
+	["_AnimationPacks"] = Instance.new("TextButton");
+	["_UICorner4"] = Instance.new("UICorner");
+	["_UIPadding2"] = Instance.new("UIPadding");
+	["_Icon3"] = Instance.new("ImageLabel");
+	["_TextLabel1"] = Instance.new("TextLabel");
+	["_UIScale2"] = Instance.new("UIScale");
+	["_Settings"] = Instance.new("TextButton");
+	["_UICorner5"] = Instance.new("UICorner");
+	["_UIPadding3"] = Instance.new("UIPadding");
+	["_Icon4"] = Instance.new("ImageLabel");
+	["_UIScale3"] = Instance.new("UIScale");
+	["_Switch"] = Instance.new("LocalScript");
+	["_ItemSelect"] = Instance.new("Frame");
+	["_UIFlexItem3"] = Instance.new("UIFlexItem");
+	["_UIPageLayout"] = Instance.new("UIPageLayout");
+	["_Emotes1"] = Instance.new("Frame");
+	["_UIListLayout4"] = Instance.new("UIListLayout");
+	["_TextLabel2"] = Instance.new("TextLabel");
+	["_Listing"] = Instance.new("ScrollingFrame");
+	["_UIFlexItem4"] = Instance.new("UIFlexItem");
+	["_UIGridLayout"] = Instance.new("UIGridLayout");
+	["_UIPadding4"] = Instance.new("UIPadding");
+	["_PaginationBar"] = Instance.new("Frame");
+	["_UIListLayout5"] = Instance.new("UIListLayout");
+	["_Previous"] = Instance.new("TextButton");
+	["_UIScale4"] = Instance.new("UIScale");
+	["_SamplePage"] = Instance.new("Frame");
+	["_UICorner6"] = Instance.new("UICorner");
+	["_Label"] = Instance.new("TextLabel");
+	["_UIScale5"] = Instance.new("UIScale");
+	["_Next"] = Instance.new("TextButton");
+	["_UIScale6"] = Instance.new("UIScale");
+	["_Search"] = Instance.new("Frame");
+	["_TextBox"] = Instance.new("TextBox");
+	["_UICorner7"] = Instance.new("UICorner");
+	["_UIPadding5"] = Instance.new("UIPadding");
+	["_UISizeConstraint1"] = Instance.new("UISizeConstraint");
+	["_AnimationPacks1"] = Instance.new("Frame");
+	["_UIListLayout6"] = Instance.new("UIListLayout");
+	["_TextLabel3"] = Instance.new("TextLabel");
+	["_Listing1"] = Instance.new("ScrollingFrame");
+	["_UIFlexItem5"] = Instance.new("UIFlexItem");
+	["_UIGridLayout1"] = Instance.new("UIGridLayout");
+	["_UIPadding6"] = Instance.new("UIPadding");
+	["_PaginationBar1"] = Instance.new("Frame");
+	["_UIListLayout7"] = Instance.new("UIListLayout");
+	["_Previous1"] = Instance.new("TextButton");
+	["_UIScale7"] = Instance.new("UIScale");
+	["_SamplePage1"] = Instance.new("Frame");
+	["_UICorner8"] = Instance.new("UICorner");
+	["_Label1"] = Instance.new("TextLabel");
+	["_UIScale8"] = Instance.new("UIScale");
+	["_Next1"] = Instance.new("TextButton");
+	["_UIScale9"] = Instance.new("UIScale");
+	["_Settings1"] = Instance.new("Frame");
+	["_UIListLayout8"] = Instance.new("UIListLayout");
+	["_TextLabel4"] = Instance.new("TextLabel");
+	["_PaginationNSearch"] = Instance.new("LocalScript");
+	["_ItemListTemplate"] = Instance.new("Frame");
+	["_Clickable"] = Instance.new("TextButton");
+	["_UICorner9"] = Instance.new("UICorner");
+	["_UIStroke"] = Instance.new("UIStroke");
+	["_CustomEffect"] = Instance.new("UIGradient");
+	["_UIListLayout9"] = Instance.new("UIListLayout");
+	["_Thumbnail"] = Instance.new("ImageLabel");
+	["_UIFlexItem6"] = Instance.new("UIFlexItem");
+	["_UICorner10"] = Instance.new("UICorner");
+	["_UIAspectRatioConstraint"] = Instance.new("UIAspectRatioConstraint");
+	["_UIStroke1"] = Instance.new("UIStroke");
+	["_Details"] = Instance.new("Frame");
+	["_UIFlexItem7"] = Instance.new("UIFlexItem");
+	["_UIListLayout10"] = Instance.new("UIListLayout");
+	["_Title"] = Instance.new("TextLabel");
+	["_Buttons"] = Instance.new("Frame");
+	["_UIListLayout11"] = Instance.new("UIListLayout");
+	["_UIFlexItem8"] = Instance.new("UIFlexItem");
+	["_Preview"] = Instance.new("TextButton");
+	["_UICorner11"] = Instance.new("UICorner");
+	["_UIPadding7"] = Instance.new("UIPadding");
+	["_Play"] = Instance.new("TextButton");
+	["_UICorner12"] = Instance.new("UICorner");
+	["_UIPadding8"] = Instance.new("UIPadding");
+	["_UIPadding9"] = Instance.new("UIPadding");
+	["_UIPadding10"] = Instance.new("UIPadding");
+	["_OpenAlpha"] = Instance.new("TextLabel");
+	["_UIStroke2"] = Instance.new("UIStroke");
+	["_MenuStateChange"] = Instance.new("BindableEvent");
+	["_MenuSpringTakeover"] = Instance.new("BindableEvent");
+	["_MenuDisplacement"] = Instance.new("LocalScript");
+	["_AvatarPreview"] = Instance.new("ViewportFrame");
+	["_UIStroke3"] = Instance.new("UIStroke");
+	["_CustomEffect1"] = Instance.new("UIGradient");
+	["_UICorner13"] = Instance.new("UICorner");
+	["_Preview1"] = Instance.new("LocalScript");
+	["_PlayEmote"] = Instance.new("BindableEvent");
+	["_WorldModel"] = Instance.new("WorldModel");
+	["_UIScale10"] = Instance.new("UIScale");
+	["_Drag"] = Instance.new("TextButton");
+	["_PointSave"] = Instance.new("ModuleScript");
+	["_Modal"] = Instance.new("Frame");
+	["_Container"] = Instance.new("CanvasGroup");
+	["_UICorner14"] = Instance.new("UICorner");
+	["_UIStroke4"] = Instance.new("UIStroke");
+	["_UIListLayout12"] = Instance.new("UIListLayout");
+	["_Visual"] = Instance.new("Frame");
+	["_Desc"] = Instance.new("TextLabel");
+	["_UIFlexItem9"] = Instance.new("UIFlexItem");
+	["_Title1"] = Instance.new("TextLabel");
+	["_UIPadding11"] = Instance.new("UIPadding");
+	["_UIListLayout13"] = Instance.new("UIListLayout");
+	["_UIFlexItem10"] = Instance.new("UIFlexItem");
+	["_Buttons1"] = Instance.new("Frame");
+	["_UIListLayout14"] = Instance.new("UIListLayout");
+	["_Sample"] = Instance.new("TextButton");
+	["_UICorner15"] = Instance.new("UICorner");
+	["_UIPadding12"] = Instance.new("UIPadding");
+	["_UIFlexItem11"] = Instance.new("UIFlexItem");
+	["_UIPadding13"] = Instance.new("UIPadding");
+	["_UIScale11"] = Instance.new("UIScale");
+	["_GrabArea"] = Instance.new("TextButton");
+	["_Open1"] = Instance.new("TextButton");
+}
+-- Properties:
+-- [Aesthetic Change]: Changed main background to solid dark gray for a premium feel.
+Converted["_AFEMMax"].DisplayOrder = 2
+Converted["_AFEMMax"].IgnoreGuiInset = true
+Converted["_AFEMMax"].ScreenInsets = Enum.ScreenInsets.DeviceSafeInsets
+Converted["_AFEMMax"].ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+Converted["_AFEMMax"].Name = "AFEMMax"
+Converted["_AFEMMax"].Parent = game:GetService("CoreGui")
+Converted["_Menu"].AnchorPoint = Vector2.new(0.5, 0.5)
+Converted["_Menu"].BackgroundColor3 = Color3.fromRGB(20, 22, 25) -- Changed from black transparent
+Converted["_Menu"].BackgroundTransparency = 0 -- Changed from 0.5
+Converted["_Menu"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_Menu"].BorderSizePixel = 0
+Converted["_Menu"].ClipsDescendants = true
+Converted["_Menu"].Position = UDim2.new(0.5, 0, 0.5, 0)
+Converted["_Menu"].Size = UDim2.new(1, 0, 1, 0)
+Converted["_Menu"].Name = "Menu"
+Converted["_Menu"].Parent = Converted["_AFEMMax"]
+Converted["_UICorner"].CornerRadius = UDim.new(0, 12) -- Added corner radius for main menu
+Converted["_UICorner"].Parent = Converted["_Menu"]
+Converted["_Branding"].AutomaticSize = Enum.AutomaticSize.X
+Converted["_Branding"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_Branding"].BackgroundTransparency = 1
+Converted["_Branding"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_Branding"].Position = UDim2.new(0, 30, 0, 30)
+Converted["_Branding"].Size = UDim2.new(0.174346209, 0, 0.08130081, 0)
+Converted["_Branding"].Name = "Branding"
+Converted["_Branding"].Parent = Converted["_Menu"]
+Converted["_Icon"].Image = "rbxassetid://6567073136"
+Converted["_Icon"].ScaleType = Enum.ScaleType.Fit
+Converted["_Icon"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_Icon"].BackgroundTransparency = 1
+Converted["_Icon"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_Icon"].BorderSizePixel = 0
+Converted["_Icon"].Size = UDim2.new(0, 30, 1, 0)
+Converted["_Icon"].Name = "Icon"
+Converted["_Icon"].Parent = Converted["_Branding"]
+Converted["_UIListLayout"].Padding = UDim.new(0, 8)
+Converted["_UIListLayout"].FillDirection = Enum.FillDirection.Horizontal
+Converted["_UIListLayout"].SortOrder = Enum.SortOrder.LayoutOrder
+Converted["_UIListLayout"].Parent = Converted["_Branding"]
+Converted["_Naming"].AutomaticSize = Enum.AutomaticSize.X
+Converted["_Naming"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_Naming"].BackgroundTransparency = 1
+Converted["_Naming"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_Naming"].BorderSizePixel = 0
+Converted["_Naming"].LayoutOrder = 1
+Converted["_Naming"].Size = UDim2.new(0, 0, 1, 0)
+Converted["_Naming"].Name = "Naming"
+Converted["_Naming"].Parent = Converted["_Branding"]
+Converted["_PriorityLine"].Font = Enum.Font.GothamBold
+Converted["_PriorityLine"].Text = "AFEM"
+Converted["_PriorityLine"].TextColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_PriorityLine"].TextScaled = true
+Converted["_PriorityLine"].TextSize = 64
+Converted["_PriorityLine"].TextWrapped = true
+Converted["_PriorityLine"].TextXAlignment = Enum.TextXAlignment.Left
+Converted["_PriorityLine"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_PriorityLine"].BackgroundTransparency = 1
+Converted["_PriorityLine"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_PriorityLine"].BorderSizePixel = 0
+Converted["_PriorityLine"].Size = UDim2.new(0, 100, 0, 0)
+Converted["_PriorityLine"].Name = "PriorityLine"
+Converted["_PriorityLine"].Parent = Converted["_Naming"]
+Converted["_UIFlexItem"].FlexMode = Enum.UIFlexMode.Custom
+Converted["_UIFlexItem"].GrowRatio = 2
+Converted["_UIFlexItem"].Parent = Converted["_PriorityLine"]
+Converted["_UIListLayout1"].SortOrder = Enum.SortOrder.LayoutOrder
+Converted["_UIListLayout1"].Parent = Converted["_Naming"]
+Converted["_Line"].FontFace = Font.new("rbxassetid://12187365364")
+Converted["_Line"].Text = "Max"
+Converted["_Line"].TextColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_Line"].TextScaled = true
+Converted["_Line"].TextSize = 14
+Converted["_Line"].TextWrapped = true
+Converted["_Line"].TextXAlignment = Enum.TextXAlignment.Left
+Converted["_Line"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_Line"].BackgroundTransparency = 1
+Converted["_Line"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_Line"].BorderSizePixel = 0
+Converted["_Line"].Size = UDim2.new(0, 100, 0, 0)
+Converted["_Line"].Name = "Line"
+Converted["_Line"].Parent = Converted["_Naming"]
+Converted["_UIFlexItem1"].FlexMode = Enum.UIFlexMode.Custom
+Converted["_UIFlexItem1"].GrowRatio = 1
+Converted["_UIFlexItem1"].Parent = Converted["_Line"]
+Converted["_UIGradient"].Color = ColorSequence.new{
+	ColorSequenceKeypoint.new(0, Color3.fromRGB(157, 157, 157)),
+	ColorSequenceKeypoint.new(1, Color3.fromRGB(255, 255, 255))
+}
+Converted["_UIGradient"].Rotation = 79
+Converted["_UIGradient"].Parent = Converted["_Line"]
+Converted["_UISizeConstraint"].MaxSize = Vector2.new(math.huge, 40)
+Converted["_UISizeConstraint"].Parent = Converted["_Branding"]
+Converted["_Bar"].Image = "rbxassetid://17333707046"
+Converted["_Bar"].ImageTransparency = 0.699999988079071
+Converted["_Bar"].ScaleType = Enum.ScaleType.Slice
+Converted["_Bar"].SliceCenter = Rect.new(112, 112, 113, 113)
+Converted["_Bar"].AnchorPoint = Vector2.new(0.5, 0.5)
+Converted["_Bar"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_Bar"].BackgroundTransparency = 1
+Converted["_Bar"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_Bar"].BorderSizePixel = 0
+Converted["_Bar"].Position = UDim2.new(0.5, 0, 0, 40)
+Converted["_Bar"].Size = UDim2.new(0, 128, 0, 6)
+Converted["_Bar"].Name = "Bar"
+Converted["_Bar"].Parent = Converted["_Menu"]
+Converted["_Tip"].Font = Enum.Font.Gotham
+Converted["_Tip"].Text = "Swipe down or tap to close."
+Converted["_Tip"].TextColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_Tip"].TextScaled = true
+Converted["_Tip"].TextSize = 14
+Converted["_Tip"].TextWrapped = true
+Converted["_Tip"].AnchorPoint = Vector2.new(0.5, 0)
+Converted["_Tip"].BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_Tip"].BackgroundTransparency = 0.699999988079071
+Converted["_Tip"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_Tip"].BorderSizePixel = 0
+Converted["_Tip"].Position = UDim2.new(0.5, 0, 1, 5)
+Converted["_Tip"].Size = UDim2.new(1, 80, 0, 40)
+Converted["_Tip"].Name = "Tip"
+Converted["_Tip"].Parent = Converted["_Bar"]
+Converted["_UICorner1"].Parent = Converted["_Tip"]
+Converted["_UIPadding"].PaddingBottom = UDim.new(0, 6)
+Converted["_UIPadding"].PaddingLeft = UDim.new(0, 12)
+Converted["_UIPadding"].PaddingRight = UDim.new(0, 12)
+Converted["_UIPadding"].PaddingTop = UDim.new(0, 6)
+Converted["_UIPadding"].Parent = Converted["_Tip"]
+Converted["_UIScale"].Parent = Converted["_Menu"]
+Converted["_CanvasGroup"].GroupTransparency = 1
+Converted["_CanvasGroup"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_CanvasGroup"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_CanvasGroup"].BorderSizePixel = 0
+Converted["_CanvasGroup"].Interactable = false
+Converted["_CanvasGroup"].Size = UDim2.new(1, 0, 1, 0)
+Converted["_CanvasGroup"].ZIndex = 99
+Converted["_CanvasGroup"].Parent = Converted["_Menu"]
+Converted["_UICorner2"].CornerRadius = UDim.new(0, 0)
+Converted["_UICorner2"].Parent = Converted["_CanvasGroup"]
+Converted["_Icon1"].Image = "rbxassetid://6567073136"
+Converted["_Icon1"].ImageColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_Icon1"].ScaleType = Enum.ScaleType.Fit
+Converted["_Icon1"].AnchorPoint = Vector2.new(0.5, 0.5)
+Converted["_Icon1"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_Icon1"].BackgroundTransparency = 1
+Converted["_Icon1"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_Icon1"].BorderSizePixel = 0
+Converted["_Icon1"].Position = UDim2.new(0.5, 0, 0.5, 0)
+Converted["_Icon1"].Size = UDim2.new(1, -200, 1, -200)
+Converted["_Icon1"].Name = "Icon"
+Converted["_Icon1"].Parent = Converted["_CanvasGroup"]
+Converted["_Open"].Font = Enum.Font.SourceSans
+Converted["_Open"].Text = ""
+Converted["_Open"].TextColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_Open"].TextSize = 14
+Converted["_Open"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_Open"].BackgroundTransparency = 1
+Converted["_Open"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_Open"].BorderSizePixel = 0
+Converted["_Open"].Size = UDim2.new(1, 0, 1, 0)
+Converted["_Open"].Name = "Open"
+Converted["_Open"].Parent = Converted["_CanvasGroup"]
+Converted["_Area"].AnchorPoint = Vector2.new(0.5, 1)
+Converted["_Area"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_Area"].BackgroundTransparency = 1
+Converted["_Area"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_Area"].BorderSizePixel = 0
+Converted["_Area"].Position = UDim2.new(0.5, 0, 1, -20)
+Converted["_Area"].Size = UDim2.new(1, -70, 1, -100)
+Converted["_Area"].Name = "Area"
+Converted["_Area"].Parent = Converted["_Menu"]
+Converted["_UIListLayout2"].FillDirection = Enum.FillDirection.Horizontal
+Converted["_UIListLayout2"].SortOrder = Enum.SortOrder.LayoutOrder
+Converted["_UIListLayout2"].Parent = Converted["_Area"]
+Converted["_CategorySelect"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_CategorySelect"].BackgroundTransparency = 1
+Converted["_CategorySelect"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_CategorySelect"].BorderSizePixel = 0
+Converted["_CategorySelect"].Size = UDim2.new(0, 0, 1, 0)
+Converted["_CategorySelect"].Name = "CategorySelect"
+Converted["_CategorySelect"].Parent = Converted["_Area"]
+Converted["_UIFlexItem2"].FlexMode = Enum.UIFlexMode.Custom
+Converted["_UIFlexItem2"].GrowRatio = 1.2000000476837158
+Converted["_UIFlexItem2"].Parent = Converted["_CategorySelect"]
+Converted["_UIListLayout3"].Padding = UDim.new(0, 8)
+Converted["_UIListLayout3"].HorizontalAlignment = Enum.HorizontalAlignment.Center
+Converted["_UIListLayout3"].SortOrder = Enum.SortOrder.LayoutOrder
+Converted["_UIListLayout3"].VerticalAlignment = Enum.VerticalAlignment.Center
+Converted["_UIListLayout3"].Parent = Converted["_CategorySelect"]
+Converted["_Emotes"].Font = Enum.Font.Gotham
+Converted["_Emotes"].Text = ""
+Converted["_Emotes"].TextColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_Emotes"].TextScaled = true
+Converted["_Emotes"].TextSize = 14
+Converted["_Emotes"].TextWrapped = true
+Converted["_Emotes"].BackgroundColor3 = Color3.fromRGB(255, 255, 255) -- Active button color
+Converted["_Emotes"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_Emotes"].BorderSizePixel = 0
+Converted["_Emotes"].Size = UDim2.new(0, 50, 0, 50)
+Converted["_Emotes"].Name = "Emotes"
+Converted["_Emotes"].Parent = Converted["_CategorySelect"]
+Converted["_UICorner3"].CornerRadius = UDim.new(0, 16)
+Converted["_UICorner3"].Parent = Converted["_Emotes"]
+Converted["_UIPadding1"].PaddingBottom = UDim.new(0, 7)
+Converted["_UIPadding1"].PaddingLeft = UDim.new(0, 7)
+Converted["_UIPadding1"].PaddingRight = UDim.new(0, 7)
+Converted["_UIPadding1"].PaddingTop = UDim.new(0, 7)
+Converted["_UIPadding1"].Parent = Converted["_Emotes"]
+Converted["_Icon2"].Image = "rbxassetid://6567073136"
+Converted["_Icon2"].ImageColor3 = Color3.fromRGB(0, 0, 0) -- Active icon color
+Converted["_Icon2"].ScaleType = Enum.ScaleType.Fit
+Converted["_Icon2"].AnchorPoint = Vector2.new(0.5, 0.5)
+Converted["_Icon2"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_Icon2"].BackgroundTransparency = 1
+Converted["_Icon2"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_Icon2"].BorderSizePixel = 0
+Converted["_Icon2"].Position = UDim2.new(0.5, 0, 0.5, 0)
+Converted["_Icon2"].Size = UDim2.new(0, 30, 0, 30)
+Converted["_Icon2"].Name = "Icon"
+Converted["_Icon2"].Parent = Converted["_Emotes"]
+Converted["_TextLabel"].Font = Enum.Font.GothamBold
+Converted["_TextLabel"].Text = "EM"
+Converted["_TextLabel"].TextColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_TextLabel"].TextScaled = true
+Converted["_TextLabel"].TextSize = 14
+Converted["_TextLabel"].TextWrapped = true
+Converted["_TextLabel"].AnchorPoint = Vector2.new(1, 1)
+Converted["_TextLabel"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_TextLabel"].BackgroundTransparency = 1
+Converted["_TextLabel"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_TextLabel"].BorderSizePixel = 0
+Converted["_TextLabel"].Position = UDim2.new(1, 0, 1, 3)
+Converted["_TextLabel"].Size = UDim2.new(0, 10, 0, 10)
+Converted["_TextLabel"].Parent = Converted["_Emotes"]
+Converted["_UIScale1"].Scale = 1.2000000476837158
+Converted["_UIScale1"].Parent = Converted["_Emotes"]
+Converted["_AnimationPacks"].Font = Enum.Font.Gotham
+Converted["_AnimationPacks"].Text = ""
+Converted["_AnimationPacks"].TextColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_AnimationPacks"].TextScaled = true
+Converted["_AnimationPacks"].TextSize = 14
+Converted["_AnimationPacks"].TextWrapped = true
+Converted["_AnimationPacks"].BackgroundColor3 = Color3.fromRGB(40, 42, 48) -- [Aesthetic Change]: Inactive button color adjusted
+Converted["_AnimationPacks"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_AnimationPacks"].BorderSizePixel = 0
+Converted["_AnimationPacks"].Size = UDim2.new(0, 50, 0, 50)
+Converted["_AnimationPacks"].Name = "AnimationPacks"
+Converted["_AnimationPacks"].Parent = Converted["_CategorySelect"]
+Converted["_UICorner4"].CornerRadius = UDim.new(0, 16)
+Converted["_UICorner4"].Parent = Converted["_AnimationPacks"]
+Converted["_UIPadding2"].PaddingBottom = UDim.new(0, 7)
+Converted["_UIPadding2"].PaddingLeft = UDim.new(0, 7)
+Converted["_UIPadding2"].PaddingRight = UDim.new(0, 7)
+Converted["_UIPadding2"].PaddingTop = UDim.new(0, 7)
+Converted["_UIPadding2"].Parent = Converted["_AnimationPacks"]
+Converted["_Icon3"].Image = "rbxassetid://6567073136"
+Converted["_Icon3"].ScaleType = Enum.ScaleType.Fit
+Converted["_Icon3"].AnchorPoint = Vector2.new(0.5, 0.5)
+Converted["_Icon3"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_Icon3"].BackgroundTransparency = 1
+Converted["_Icon3"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_Icon3"].BorderSizePixel = 0
+Converted["_Icon3"].Position = UDim2.new(0.5, 0, 0.5, 0)
+Converted["_Icon3"].Size = UDim2.new(0, 30, 0, 30)
+Converted["_Icon3"].Name = "Icon"
+Converted["_Icon3"].Parent = Converted["_AnimationPacks"]
+Converted["_TextLabel1"].Font = Enum.Font.GothamBold
+Converted["_TextLabel1"].Text = "AP"
+Converted["_TextLabel1"].TextColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_TextLabel1"].TextScaled = true
+Converted["_TextLabel1"].TextSize = 14
+Converted["_TextLabel1"].TextWrapped = true
+Converted["_TextLabel1"].AnchorPoint = Vector2.new(1, 1)
+Converted["_TextLabel1"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_TextLabel1"].BackgroundTransparency = 1
+Converted["_TextLabel1"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_TextLabel1"].BorderSizePixel = 0
+Converted["_TextLabel1"].Position = UDim2.new(1, 0, 1, 3)
+Converted["_TextLabel1"].Size = UDim2.new(0, 10, 0, 10)
+Converted["_TextLabel1"].Parent = Converted["_AnimationPacks"]
+Converted["_UIScale2"].Parent = Converted["_AnimationPacks"]
+Converted["_Settings"].Font = Enum.Font.Gotham
+Converted["_Settings"].Text = ""
+Converted["_Settings"].TextColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_Settings"].TextScaled = true
+Converted["_Settings"].TextSize = 14
+Converted["_Settings"].TextWrapped = true
+Converted["_Settings"].BackgroundColor3 = Color3.fromRGB(40, 42, 48) -- [Aesthetic Change]: Inactive button color adjusted
+Converted["_Settings"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_Settings"].BorderSizePixel = 0
+Converted["_Settings"].Size = UDim2.new(0, 50, 0, 50)
+Converted["_Settings"].Name = "Settings"
+Converted["_Settings"].Parent = Converted["_CategorySelect"]
+Converted["_UICorner5"].CornerRadius = UDim.new(0, 16)
+Converted["_UICorner5"].Parent = Converted["_Settings"]
+Converted["_UIPadding3"].PaddingBottom = UDim.new(0, 7)
+Converted["_UIPadding3"].PaddingLeft = UDim.new(0, 7)
+Converted["_UIPadding3"].PaddingRight = UDim.new(0, 7)
+Converted["_UIPadding3"].PaddingTop = UDim.new(0, 7)
+Converted["_UIPadding3"].Parent = Converted["_Settings"]
+Converted["_Icon4"].Image = "rbxassetid://9405931578"
+Converted["_Icon4"].ScaleType = Enum.ScaleType.Fit
+Converted["_Icon4"].AnchorPoint = Vector2.new(0.5, 0.5)
+Converted["_Icon4"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_Icon4"].BackgroundTransparency = 1
+Converted["_Icon4"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_Icon4"].BorderSizePixel = 0
+Converted["_Icon4"].Position = UDim2.new(0.5, 0, 0.5, 0)
+Converted["_Icon4"].Size = UDim2.new(0, 30, 0, 30)
+Converted["_Icon4"].Name = "Icon"
+Converted["_Icon4"].Parent = Converted["_Settings"]
+Converted["_UIScale3"].Parent = Converted["_Settings"]
+Converted["_ItemSelect"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_ItemSelect"].BackgroundTransparency = 1
+Converted["_ItemSelect"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_ItemSelect"].BorderSizePixel = 0
+Converted["_ItemSelect"].ClipsDescendants = true
+Converted["_ItemSelect"].Size = UDim2.new(0, 0, 1, 0)
+Converted["_ItemSelect"].Name = "ItemSelect"
+Converted["_ItemSelect"].Parent = Converted["_Area"]
+Converted["_UIFlexItem3"].FlexMode = Enum.UIFlexMode.Custom
+Converted["_UIFlexItem3"].GrowRatio = 10
+Converted["_UIFlexItem3"].Parent = Converted["_ItemSelect"]
+Converted["_UIPageLayout"].EasingStyle = Enum.EasingStyle.Exponential
+Converted["_UIPageLayout"].GamepadInputEnabled = false
+Converted["_UIPageLayout"].Padding = UDim.new(0, 20)
+Converted["_UIPageLayout"].ScrollWheelInputEnabled = false
+Converted["_UIPageLayout"].TouchInputEnabled = false
+Converted["_UIPageLayout"].TweenTime = 0.6000000238418579
+Converted["_UIPageLayout"].FillDirection = Enum.FillDirection.Vertical
+Converted["_UIPageLayout"].SortOrder = Enum.SortOrder.LayoutOrder
+Converted["_UIPageLayout"].Parent = Converted["_ItemSelect"]
+Converted["_Emotes1"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_Emotes1"].BackgroundTransparency = 1
+Converted["_Emotes1"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_Emotes1"].BorderSizePixel = 0
+Converted["_Emotes1"].Size = UDim2.new(1, 0, 1, 0)
+Converted["_Emotes1"].Name = "Emotes"
+Converted["_Emotes1"].Parent = Converted["_ItemSelect"]
+Converted["_UIListLayout4"].Padding = UDim.new(0, 8)
+Converted["_UIListLayout4"].SortOrder = Enum.SortOrder.LayoutOrder
+Converted["_UIListLayout4"].Parent = Converted["_Emotes1"]
+Converted["_TextLabel2"].Font = Enum.Font.GothamBold
+Converted["_TextLabel2"].Text = "Emotes"
+Converted["_TextLabel2"].TextColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_TextLabel2"].TextScaled = true
+Converted["_TextLabel2"].TextSize = 14
+Converted["_TextLabel2"].TextWrapped = true
+Converted["_TextLabel2"].TextXAlignment = Enum.TextXAlignment.Left
+Converted["_TextLabel2"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_TextLabel2"].BackgroundTransparency = 1
+Converted["_TextLabel2"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_TextLabel2"].BorderSizePixel = 0
+Converted["_TextLabel2"].LayoutOrder = -10
+Converted["_TextLabel2"].Size = UDim2.new(1, 0, 0, 20)
+Converted["_TextLabel2"].Parent = Converted["_Emotes1"]
+Converted["_Listing"].AutomaticCanvasSize = Enum.AutomaticSize.Y
+Converted["_Listing"].CanvasSize = UDim2.new(0, 0, 0, 0)
+Converted["_Listing"].ScrollBarThickness = 3 -- [Aesthetic Change]: Slightly thicker scrollbar
+Converted["_Listing"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_Listing"].BackgroundTransparency = 1
+Converted["_Listing"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_Listing"].BorderSizePixel = 0
+Converted["_Listing"].Selectable = false
+Converted["_Listing"].Size = UDim2.new(1, 0, 0, 0)
+Converted["_Listing"].Name = "Listing"
+Converted["_Listing"].Parent = Converted["_Emotes1"]
+Converted["_UIFlexItem4"].FlexMode = Enum.UIFlexMode.Grow
+Converted["_UIFlexItem4"].Parent = Converted["_Listing"]
+Converted["_UIGridLayout"].CellPadding = UDim2.new(0, 10, 0, 10)
+Converted["_UIGridLayout"].CellSize = UDim2.new(0.300000012, -3, 0, 100)
+Converted["_UIGridLayout"].HorizontalAlignment = Enum.HorizontalAlignment.Center
+Converted["_UIGridLayout"].SortOrder = Enum.SortOrder.LayoutOrder
+Converted["_UIGridLayout"].Parent = Converted["_Listing"]
+Converted["_UIPadding4"].PaddingBottom = UDim.new(0, 16)
+Converted["_UIPadding4"].PaddingTop = UDim.new(0, 8)
+Converted["_UIPadding4"].Parent = Converted["_Listing"]
+Converted["_PaginationBar"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_PaginationBar"].BackgroundTransparency = 1
+Converted["_PaginationBar"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_PaginationBar"].BorderSizePixel = 0
+Converted["_PaginationBar"].Size = UDim2.new(1, 0, 0, 25)
+Converted["_PaginationBar"].Name = "PaginationBar"
+Converted["_PaginationBar"].Parent = Converted["_Emotes1"]
+Converted["_UIListLayout5"].Padding = UDim.new(0, 8)
+Converted["_UIListLayout5"].FillDirection = Enum.FillDirection.Horizontal
+Converted["_UIListLayout5"].SortOrder = Enum.SortOrder.LayoutOrder
+Converted["_UIListLayout5"].VerticalAlignment = Enum.VerticalAlignment.Center
+Converted["_UIListLayout5"].Parent = Converted["_PaginationBar"]
+Converted["_Previous"].Font = Enum.Font.GothamBold
+Converted["_Previous"].Text = "<"
+Converted["_Previous"].TextColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_Previous"].TextScaled = true
+Converted["_Previous"].TextSize = 14
+Converted["_Previous"].TextWrapped = true
+Converted["_Previous"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_Previous"].BackgroundTransparency = 1
+Converted["_Previous"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_Previous"].BorderSizePixel = 0
+Converted["_Previous"].LayoutOrder = -999
+Converted["_Previous"].Size = UDim2.new(0, 25, 0, 25)
+Converted["_Previous"].Name = "Previous"
+Converted["_Previous"].Parent = Converted["_PaginationBar"]
+Converted["_UIScale4"].Scale = 1.0000000116860974e-07
+Converted["_UIScale4"].Parent = Converted["_Previous"]
+Converted["_SamplePage"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_SamplePage"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_SamplePage"].BorderSizePixel = 0
+Converted["_SamplePage"].LayoutOrder = 1
+Converted["_SamplePage"].Size = UDim2.new(0, 25, 0, 25)
+Converted["_SamplePage"].Visible = false
+Converted["_SamplePage"].Name = "SamplePage"
+Converted["_SamplePage"].Parent = Converted["_PaginationBar"]
+Converted["_UICorner6"].CornerRadius = UDim.new(1, 0)
+Converted["_UICorner6"].Parent = Converted["_SamplePage"]
+Converted["_Label"].Font = Enum.Font.GothamBold
+Converted["_Label"].Text = "1"
+Converted["_Label"].TextColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_Label"].TextScaled = true
+Converted["_Label"].TextSize = 14
+Converted["_Label"].TextWrapped = true
+Converted["_Label"].AnchorPoint = Vector2.new(0.5, 0.5)
+Converted["_Label"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_Label"].BackgroundTransparency = 1
+Converted["_Label"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_Label"].BorderSizePixel = 0
+Converted["_Label"].Position = UDim2.new(0.5, 0, 0.5, 0)
+Converted["_Label"].Size = UDim2.new(1, -5, 1, -5)
+Converted["_Label"].Name = "Label"
+Converted["_Label"].Parent = Converted["_SamplePage"]
+Converted["_UIScale5"].Parent = Converted["_SamplePage"]
+Converted["_Next"].Font = Enum.Font.GothamBold
+Converted["_Next"].Text = ">"
+Converted["_Next"].TextColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_Next"].TextScaled = true
+Converted["_Next"].TextSize = 14
+Converted["_Next"].TextWrapped = true
+Converted["_Next"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_Next"].BackgroundTransparency = 1
+Converted["_Next"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_Next"].BorderSizePixel = 0
+Converted["_Next"].LayoutOrder = 999
+Converted["_Next"].Size = UDim2.new(0, 25, 0, 25)
+Converted["_Next"].Name = "Next"
+Converted["_Next"].Parent = Converted["_PaginationBar"]
+Converted["_UIScale6"].Parent = Converted["_Next"]
+Converted["_Search"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_Search"].BackgroundTransparency = 1
+Converted["_Search"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_Search"].BorderSizePixel = 0
+Converted["_Search"].LayoutOrder = -1
+Converted["_Search"].Size = UDim2.new(1, 0, 0, 25)
+Converted["_Search"].Name = "Search"
+Converted["_Search"].Parent = Converted["_Emotes1"]
+Converted["_TextBox"].Font = Enum.Font.Gotham
+Converted["_TextBox"].PlaceholderText = "Search"
+Converted["_TextBox"].Text = ""
+Converted["_TextBox"].TextColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_TextBox"].TextScaled = true
+Converted["_TextBox"].TextSize = 14
+Converted["_TextBox"].TextWrapped = true
+Converted["_TextBox"].TextXAlignment = Enum.TextXAlignment.Left
+Converted["_TextBox"].BackgroundColor3 = Color3.fromRGB(40, 42, 48) -- [Aesthetic Change]: Search bar color match
+Converted["_TextBox"].BackgroundTransparency = 0 -- [Aesthetic Change]: Solid background
+Converted["_TextBox"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_TextBox"].BorderSizePixel = 0
+Converted["_TextBox"].Size = UDim2.new(1, 0, 1, 0)
+Converted["_TextBox"].Parent = Converted["_Search"]
+Converted["_UICorner7"].CornerRadius = UDim.new(0, 12) -- [Aesthetic Change]: Adjusted corner radius
+Converted["_UICorner7"].Parent = Converted["_TextBox"]
+Converted["_UIPadding5"].PaddingBottom = UDim.new(0, 7)
+Converted["_UIPadding5"].PaddingLeft = UDim.new(0, 10) -- [Aesthetic Change]: Increased horizontal padding
+Converted["_UIPadding5"].PaddingRight = UDim.new(0, 10) -- [Aesthetic Change]: Increased horizontal padding
+Converted["_UIPadding5"].PaddingTop = UDim.new(0, 7)
+Converted["_UIPadding5"].Parent = Converted["_TextBox"]
+Converted["_UISizeConstraint1"].MaxSize = Vector2.new(200, math.huge)
+Converted["_UISizeConstraint1"].Parent = Converted["_Search"]
+Converted["_AnimationPacks1"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_AnimationPacks1"].BackgroundTransparency = 1
+Converted["_AnimationPacks1"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_AnimationPacks1"].BorderSizePixel = 0
+Converted["_AnimationPacks1"].LayoutOrder = 1
+Converted["_AnimationPacks1"].Size = UDim2.new(1, 0, 1, 0)
+Converted["_AnimationPacks1"].Name = "AnimationPacks"
+Converted["_AnimationPacks1"].Parent = Converted["_ItemSelect"]
+Converted["_UIListLayout6"].Padding = UDim.new(0, 8)
+Converted["_UIListLayout6"].SortOrder = Enum.SortOrder.LayoutOrder
+Converted["_UIListLayout6"].Parent = Converted["_AnimationPacks1"]
+Converted["_TextLabel3"].Font = Enum.Font.GothamBold
+Converted["_TextLabel3"].Text = "Animation packs"
+Converted["_TextLabel3"].TextColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_TextLabel3"].TextScaled = true
+Converted["_TextLabel3"].TextSize = 14
+Converted["_TextLabel3"].TextWrapped = true
+Converted["_TextLabel3"].TextXAlignment = Enum.TextXAlignment.Left
+Converted["_TextLabel3"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_TextLabel3"].BackgroundTransparency = 1
+Converted["_TextLabel3"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_TextLabel3"].BorderSizePixel = 0
+Converted["_TextLabel3"].LayoutOrder = -10
+Converted["_TextLabel3"].Size = UDim2.new(1, 0, 0, 20)
+Converted["_TextLabel3"].Parent = Converted["_AnimationPacks1"]
+Converted["_Listing1"].AutomaticCanvasSize = Enum.AutomaticSize.Y
+Converted["_Listing1"].CanvasSize = UDim2.new(0, 0, 0, 0)
+Converted["_Listing1"].ScrollBarThickness = 3 -- [Aesthetic Change]: Slightly thicker scrollbar
+Converted["_Listing1"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_Listing1"].BackgroundTransparency = 1
+Converted["_Listing1"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_Listing1"].BorderSizePixel = 0
+Converted["_Listing1"].Selectable = false
+Converted["_Listing1"].Size = UDim2.new(1, 0, 0, 0)
+Converted["_Listing1"].Name = "Listing"
+Converted["_Listing1"].Parent = Converted["_AnimationPacks1"]
+Converted["_UIFlexItem5"].FlexMode = Enum.UIFlexMode.Grow
+Converted["_UIFlexItem5"].Parent = Converted["_Listing1"]
+Converted["_UIGridLayout1"].CellPadding = UDim2.new(0, 10, 0, 10)
+Converted["_UIGridLayout1"].CellSize = UDim2.new(0.300000012, -3, 0, 100)
+Converted["_UIGridLayout1"].HorizontalAlignment = Enum.HorizontalAlignment.Center
+Converted["_UIGridLayout1"].SortOrder = Enum.SortOrder.LayoutOrder
+Converted["_UIGridLayout1"].Parent = Converted["_Listing1"]
+Converted["_UIPadding6"].PaddingBottom = UDim.new(0, 16)
+Converted["_UIPadding6"].PaddingTop = UDim.new(0, 8)
+Converted["_UIPadding6"].Parent = Converted["_Listing1"]
+Converted["_PaginationBar1"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_PaginationBar1"].BackgroundTransparency = 1
+Converted["_PaginationBar1"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_PaginationBar1"].BorderSizePixel = 0
+Converted["_PaginationBar1"].Size = UDim2.new(1, 0, 0, 25)
+Converted["_PaginationBar1"].Name = "PaginationBar"
+Converted["_PaginationBar1"].Parent = Converted["_AnimationPacks1"]
+Converted["_UIListLayout7"].Padding = UDim.new(0, 8)
+Converted["_UIListLayout7"].FillDirection = Enum.FillDirection.Horizontal
+Converted["_UIListLayout7"].SortOrder = Enum.SortOrder.LayoutOrder
+Converted["_UIListLayout7"].VerticalAlignment = Enum.VerticalAlignment.Center
+Converted["_UIListLayout7"].Parent = Converted["_PaginationBar1"]
+Converted["_Previous1"].Font = Enum.Font.GothamBold
+Converted["_Previous1"].Text = "<"
+Converted["_Previous1"].TextColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_Previous1"].TextScaled = true
+Converted["_Previous1"].TextSize = 14
+Converted["_Previous1"].TextWrapped = true
+Converted["_Previous1"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_Previous1"].BackgroundTransparency = 1
+Converted["_Previous1"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_Previous1"].BorderSizePixel = 0
+Converted["_Previous1"].LayoutOrder = -999
+Converted["_Previous1"].Size = UDim2.new(0, 25, 0, 25)
+Converted["_Previous1"].Name = "Previous"
+Converted["_Previous1"].Parent = Converted["_PaginationBar1"]
+Converted["_UIScale7"].Scale = 1.0000000116860974e-07
+Converted["_UIScale7"].Parent = Converted["_Previous1"]
+Converted["_SamplePage1"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_SamplePage1"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_SamplePage1"].BorderSizePixel = 0
+Converted["_SamplePage1"].LayoutOrder = 1
+Converted["_SamplePage1"].Size = UDim2.new(0, 25, 0, 25)
+Converted["_SamplePage1"].Visible = false
+Converted["_SamplePage1"].Name = "SamplePage"
+Converted["_SamplePage1"].Parent = Converted["_PaginationBar1"]
+Converted["_UICorner8"].CornerRadius = UDim.new(1, 0)
+Converted["_UICorner8"].Parent = Converted["_SamplePage1"]
+Converted["_Label1"].Font = Enum.Font.GothamBold
+Converted["_Label1"].Text = "1"
+Converted["_Label1"].TextColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_Label1"].TextScaled = true
+Converted["_Label1"].TextSize = 14
+Converted["_Label1"].TextWrapped = true
+Converted["_Label1"].AnchorPoint = Vector2.new(0.5, 0.5)
+Converted["_Label1"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_Label1"].BackgroundTransparency = 1
+Converted["_Label1"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_Label1"].BorderSizePixel = 0
+Converted["_Label1"].Position = UDim2.new(0.5, 0, 0.5, 0)
+Converted["_Label1"].Size = UDim2.new(1, -5, 1, -5)
+Converted["_Label1"].Name = "Label"
+Converted["_Label1"].Parent = Converted["_SamplePage1"]
+Converted["_UIScale8"].Parent = Converted["_SamplePage1"]
+Converted["_Next1"].Font = Enum.Font.GothamBold
+Converted["_Next1"].Text = ">"
+Converted["_Next1"].TextColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_Next1"].TextScaled = true
+Converted["_Next1"].TextSize = 14
+Converted["_Next1"].TextWrapped = true
+Converted["_Next1"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_Next1"].BackgroundTransparency = 1
+Converted["_Next1"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_Next1"].BorderSizePixel = 0
+Converted["_Next1"].LayoutOrder = 999
+Converted["_Next1"].Size = UDim2.new(0, 25, 0, 25)
+Converted["_Next1"].Name = "Next"
+Converted["_Next1"].Parent = Converted["_PaginationBar1"]
+Converted["_UIScale9"].Parent = Converted["_Next1"]
+Converted["_Settings1"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_Settings1"].BackgroundTransparency = 1
+Converted["_Settings1"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_Settings1"].BorderSizePixel = 0
+Converted["_Settings1"].LayoutOrder = 2
+Converted["_Settings1"].Size = UDim2.new(1, 0, 1, 0)
+Converted["_Settings1"].Name = "Settings"
+Converted["_Settings1"].Parent = Converted["_ItemSelect"]
+Converted["_UIListLayout8"].Padding = UDim.new(0, 8)
+Converted["_UIListLayout8"].SortOrder = Enum.SortOrder.LayoutOrder
+Converted["_UIListLayout8"].Parent = Converted["_Settings1"]
+Converted["_TextLabel4"].Font = Enum.Font.GothamBold
+Converted["_TextLabel4"].Text = "Settings"
+Converted["_TextLabel4"].TextColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_TextLabel4"].TextScaled = true
+Converted["_TextLabel4"].TextSize = 14
+Converted["_TextLabel4"].TextWrapped = true
+Converted["_TextLabel4"].TextXAlignment = Enum.TextXAlignment.Left
+Converted["_TextLabel4"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_TextLabel4"].BackgroundTransparency = 1
+Converted["_TextLabel4"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_TextLabel4"].BorderSizePixel = 0
+Converted["_TextLabel4"].LayoutOrder = -10
+Converted["_TextLabel4"].Size = UDim2.new(1, 0, 0, 20)
+Converted["_TextLabel4"].Parent = Converted["_Settings1"]
+Converted["_ItemListTemplate"].Active = true
+Converted["_ItemListTemplate"].BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+Converted["_ItemListTemplate"].BackgroundTransparency = 1
+Converted["_ItemListTemplate"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_ItemListTemplate"].BorderSizePixel = 0
+Converted["_ItemListTemplate"].ClipsDescendants = true
+Converted["_ItemListTemplate"].Selectable = true
+Converted["_ItemListTemplate"].Size = UDim2.new(0, 200, 0, 50)
+Converted["_ItemListTemplate"].Visible = false
+Converted["_ItemListTemplate"].Name = "ItemListTemplate"
+Converted["_ItemListTemplate"].Parent = Converted["_ItemSelect"]
+Converted["_Clickable"].Font = Enum.Font.SourceSans
+Converted["_Clickable"].Text = ""
+Converted["_Clickable"].TextColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_Clickable"].TextSize = 14
+Converted["_Clickable"].AnchorPoint = Vector2.new(0.5, 0.5)
+Converted["_Clickable"].BackgroundColor3 = Color3.fromRGB(30, 32, 36) -- [Aesthetic Change]: Card background color
+Converted["_Clickable"].BackgroundTransparency = 0 -- [Aesthetic Change]: Solid card background
+Converted["_Clickable"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_Clickable"].BorderSizePixel = 0
+Converted["_Clickable"].Position = UDim2.new(0.5, 0, 0.5, 0)
+Converted["_Clickable"].Size = UDim2.new(1, 0, 1, 0)
+Converted["_Clickable"].Name = "Clickable"
+Converted["_Clickable"].Parent = Converted["_ItemListTemplate"]
+Converted["_UICorner9"].CornerRadius = UDim.new(0, 12) -- [Aesthetic Change]: Card corner radius adjusted
+Converted["_UICorner9"].Parent = Converted["_Clickable"]
+Converted["_UIStroke"].ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+Converted["_UIStroke"].Color = Color3.fromRGB(55, 58, 64) -- [Aesthetic Change]: Subtle border color
+Converted["_UIStroke"].Thickness = 1.5 -- [Aesthetic Change]: Thinner border
+Converted["_UIStroke"].Parent = Converted["_Clickable"]
+-- [Aesthetic Change]: Modified rainbow gradient to be a subtle silver/white gradient. No more "rainbow text".
+Converted["_CustomEffect"].Color = ColorSequence.new{
+	ColorSequenceKeypoint.new(0, Color3.fromRGB(220, 220, 220)),
+	ColorSequenceKeypoint.new(1, Color3.fromRGB(180, 180, 180))
+}
+Converted["_CustomEffect"].Enabled = false
+Converted["_CustomEffect"].Rotation = -37
+Converted["_CustomEffect"].Name = "CustomEffect"
+Converted["_CustomEffect"].Parent = Converted["_UIStroke"]
+Converted["_UIListLayout9"].Padding = UDim.new(0, 8)
+Converted["_UIListLayout9"].FillDirection = Enum.FillDirection.Horizontal
+Converted["_UIListLayout9"].SortOrder = Enum.SortOrder.LayoutOrder
+Converted["_UIListLayout9"].Parent = Converted["_Clickable"]
+Converted["_Thumbnail"].Image = "rbxasset://textures/ui/GuiImagePlaceholder.png"
+Converted["_Thumbnail"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_Thumbnail"].BackgroundTransparency = 1
+Converted["_Thumbnail"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_Thumbnail"].BorderSizePixel = 0
+Converted["_Thumbnail"].Size = UDim2.new(0, 0, 1, 0)
+Converted["_Thumbnail"].Name = "Thumbnail"
+Converted["_Thumbnail"].Parent = Converted["_Clickable"]
+Converted["_UIFlexItem6"].FlexMode = Enum.UIFlexMode.Grow
+Converted["_UIFlexItem6"].Parent = Converted["_Thumbnail"]
+Converted["_UICorner10"].CornerRadius = UDim.new(0, 10) -- [Aesthetic Change]: Thumbnail corner radius adjusted
+Converted["_UICorner10"].Parent = Converted["_Thumbnail"]
+Converted["_UIAspectRatioConstraint"].Parent = Converted["_Thumbnail"]
+Converted["_UIStroke1"].ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+Converted["_UIStroke1"].Color = Color3.fromRGB(55, 58, 64) -- [Aesthetic Change]: Subtle border color for thumbnail
+Converted["_UIStroke1"].Thickness = 1 -- [Aesthetic Change]: Thinner border
+Converted["_UIStroke1"].Parent = Converted["_Thumbnail"]
+Converted["_Details"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_Details"].BackgroundTransparency = 1
+Converted["_Details"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_Details"].BorderSizePixel = 0
+Converted["_Details"].Size = UDim2.new(0, 0, 1, 0)
+Converted["_Details"].Name = "Details"
+Converted["_Details"].Parent = Converted["_Clickable"]
+Converted["_UIFlexItem7"].FlexMode = Enum.UIFlexMode.Grow
+Converted["_UIFlexItem7"].Parent = Converted["_Details"]
+Converted["_UIListLayout10"].Padding = UDim.new(0, 4)
+Converted["_UIListLayout10"].SortOrder = Enum.SortOrder.LayoutOrder
+Converted["_UIListLayout10"].Parent = Converted["_Details"]
+Converted["_Title"].Font = Enum.Font.GothamBold
+Converted["_Title"].TextColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_Title"].TextSize = 14
+Converted["_Title"].TextWrapped = true
+Converted["_Title"].TextXAlignment = Enum.TextXAlignment.Left
+Converted["_Title"].AutomaticSize = Enum.AutomaticSize.Y
+Converted["_Title"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_Title"].BackgroundTransparency = 1
+Converted["_Title"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_Title"].BorderSizePixel = 0
+Converted["_Title"].Size = UDim2.new(1, 0, 0, 15)
+Converted["_Title"].Name = "Title"
+Converted["_Title"].Parent = Converted["_Details"]
+Converted["_Buttons"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_Buttons"].BackgroundTransparency = 1
+Converted["_Buttons"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_Buttons"].BorderSizePixel = 0
+Converted["_Buttons"].Size = UDim2.new(1, 0, 0, 0)
+Converted["_Buttons"].Name = "Buttons"
+Converted["_Buttons"].Parent = Converted["_Details"]
+Converted["_UIListLayout11"].Padding = UDim.new(0, 8)
+Converted["_UIListLayout11"].FillDirection = Enum.FillDirection.Horizontal
+Converted["_UIListLayout11"].HorizontalAlignment = Enum.HorizontalAlignment.Right
+Converted["_UIListLayout11"].SortOrder = Enum.SortOrder.LayoutOrder
+Converted["_UIListLayout11"].VerticalAlignment = Enum.VerticalAlignment.Bottom
+Converted["_UIListLayout11"].Parent = Converted["_Buttons"]
+Converted["_UIFlexItem8"].FlexMode = Enum.UIFlexMode.Grow
+Converted["_UIFlexItem8"].Parent = Converted["_Buttons"]
+Converted["_Preview"].Font = Enum.Font.GothamBold
+Converted["_Preview"].Text = "PREVIEW"
+Converted["_Preview"].TextColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_Preview"].TextScaled = true
+Converted["_Preview"].TextSize = 14
+Converted["_Preview"].TextWrapped = true
+Converted["_Preview"].BackgroundColor3 = Color3.fromRGB(70, 70, 70) -- [Aesthetic Change]: Button color adjusted
+Converted["_Preview"].BackgroundTransparency = 0 -- [Aesthetic Change]: Solid button color
+Converted["_Preview"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_Preview"].BorderSizePixel = 0
+Converted["_Preview"].Size = UDim2.new(0, 50, 0, 15)
+Converted["_Preview"].Name = "Preview"
+Converted["_Preview"].Parent = Converted["_Buttons"]
+Converted["_UICorner11"].CornerRadius = UDim.new(0, 6)
+Converted["_UICorner11"].Parent = Converted["_Preview"]
+Converted["_UIPadding7"].PaddingBottom = UDim.new(0, 4)
+Converted["_UIPadding7"].PaddingLeft = UDim.new(0, 4)
+Converted["_UIPadding7"].PaddingRight = UDim.new(0, 4)
+Converted["_UIPadding7"].PaddingTop = UDim.new(0, 3)
+Converted["_UIPadding7"].Parent = Converted["_Preview"]
+Converted["_Play"].Font = Enum.Font.GothamBold
+Converted["_Play"].Text = "PLAY"
+Converted["_Play"].TextColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_Play"].TextScaled = true
+Converted["_Play"].TextSize = 14
+Converted["_Play"].TextWrapped = true
+Converted["_Play"].BackgroundColor3 = Color3.fromRGB(70, 70, 70) -- [Aesthetic Change]: Button color adjusted
+Converted["_Play"].BackgroundTransparency = 0 -- [Aesthetic Change]: Solid button color
+Converted["_Play"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_Play"].BorderSizePixel = 0
+Converted["_Play"].Size = UDim2.new(0, 40, 0, 15)
+Converted["_Play"].Name = "Play"
+Converted["_Play"].Parent = Converted["_Buttons"]
+Converted["_UICorner12"].CornerRadius = UDim.new(0, 6)
+Converted["_UICorner12"].Parent = Converted["_Play"]
+Converted["_UIPadding8"].PaddingBottom = UDim.new(0, 4)
+Converted["_UIPadding8"].PaddingLeft = UDim.new(0, 4)
+Converted["_UIPadding8"].PaddingRight = UDim.new(0, 4)
+Converted["_UIPadding8"].PaddingTop = UDim.new(0, 3)
+Converted["_UIPadding8"].Parent = Converted["_Play"]
+Converted["_UIPadding9"].PaddingBottom = UDim.new(0, 10) -- [Aesthetic Change]: Increased padding
+Converted["_UIPadding9"].PaddingLeft = UDim.new(0, 10) -- [Aesthetic Change]: Increased padding
+Converted["_UIPadding9"].PaddingRight = UDim.new(0, 10) -- [Aesthetic Change]: Increased padding
+Converted["_UIPadding9"].PaddingTop = UDim.new(0, 10) -- [Aesthetic Change]: Increased padding
+Converted["_UIPadding9"].Parent = Converted["_Clickable"]
+Converted["_UIPadding10"].PaddingBottom = UDim.new(0, 4) -- [Aesthetic Change]: Increased padding around card frame
+Converted["_UIPadding10"].PaddingLeft = UDim.new(0, 4) -- [Aesthetic Change]: Increased padding around card frame
+Converted["_UIPadding10"].PaddingRight = UDim.new(0, 4) -- [Aesthetic Change]: Increased padding around card frame
+Converted["_UIPadding10"].PaddingTop = UDim.new(0, 4) -- [Aesthetic Change]: Increased padding around card frame
+Converted["_UIPadding10"].Parent = Converted["_ItemListTemplate"]
+Converted["_OpenAlpha"].Font = Enum.Font.GothamBold
+Converted["_OpenAlpha"].Text = "OPEN ALPHA                     OPEN ALPHA                     OPEN ALPHA"
+Converted["_OpenAlpha"].TextColor3 = Color3.fromRGB(255, 204.0000182390213, 0)
+Converted["_OpenAlpha"].TextScaled = true
+Converted["_OpenAlpha"].TextSize = 14
+Converted["_OpenAlpha"].TextTransparency = 0.38999998569488525
+Converted["_OpenAlpha"].TextWrapped = true
+Converted["_OpenAlpha"].AnchorPoint = Vector2.new(0.5, 1)
+Converted["_OpenAlpha"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_OpenAlpha"].BackgroundTransparency = 1
+Converted["_OpenAlpha"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_OpenAlpha"].BorderSizePixel = 0
+Converted["_OpenAlpha"].Position = UDim2.new(0.5, 0, 1, -20)
+Converted["_OpenAlpha"].Size = UDim2.new(0, 600, 0, 10)
+Converted["_OpenAlpha"].Name = "OpenAlpha"
+Converted["_OpenAlpha"].Parent = Converted["_Menu"]
+Converted["_UIStroke2"].Color = Color3.fromRGB(45.00000111758709, 35.00000171363354, 1.0000000591389835)
+Converted["_UIStroke2"].Thickness = 2.700000047683716
+Converted["_UIStroke2"].Parent = Converted["_OpenAlpha"]
+Converted["_MenuStateChange"].Name = "MenuStateChange"
+Converted["_MenuStateChange"].Parent = Converted["_Menu"]
+Converted["_MenuSpringTakeover"].Name = "MenuSpringTakeover"
+Converted["_MenuSpringTakeover"].Parent = Converted["_Menu"]
+Converted["_AvatarPreview"].Ambient = Color3.fromRGB(70, 70, 70)
+Converted["_AvatarPreview"].LightColor = Color3.fromRGB(255, 255, 255)
+Converted["_AvatarPreview"].LightDirection = Vector3.new(0.5, -0.5, -0.5)
+Converted["_AvatarPreview"].AnchorPoint = Vector2.new(1, 0)
+Converted["_AvatarPreview"].BackgroundColor3 = Color3.fromRGB(30, 32, 36) -- [Aesthetic Change]: Viewport background color match
+Converted["_AvatarPreview"].BackgroundTransparency = 0 -- [Aesthetic Change]: Solid background
+Converted["_AvatarPreview"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_AvatarPreview"].BorderSizePixel = 0
+Converted["_AvatarPreview"].Position = UDim2.new(1, -20, 0, 20)
+Converted["_AvatarPreview"].Size = UDim2.new(0, 100, 0, 100)
+Converted["_AvatarPreview"].Name = "AvatarPreview"
+Converted["_AvatarPreview"].Parent = Converted["_Menu"]
+Converted["_UIStroke3"].ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+Converted["_UIStroke3"].Color = Color3.fromRGB(55, 58, 64) -- [Aesthetic Change]: Subtle border color
+Converted["_UIStroke3"].Thickness = 1.5 -- [Aesthetic Change]: Thinner border
+Converted["_UIStroke3"].Parent = Converted["_AvatarPreview"]
+-- [Aesthetic Change]: Modified rainbow gradient to be a subtle silver/white gradient. No more "rainbow text".
+Converted["_CustomEffect1"].Color = ColorSequence.new{
+	ColorSequenceKeypoint.new(0, Color3.fromRGB(220, 220, 220)),
+	ColorSequenceKeypoint.new(1, Color3.fromRGB(180, 180, 180))
+}
+Converted["_CustomEffect1"].Enabled = false
+Converted["_CustomEffect1"].Rotation = -37
+Converted["_CustomEffect1"].Name = "CustomEffect"
+Converted["_CustomEffect1"].Parent = Converted["_UIStroke3"]
+Converted["_UICorner13"].CornerRadius = UDim.new(0, 16)
+Converted["_UICorner13"].Parent = Converted["_AvatarPreview"]
+Converted["_PlayEmote"].Name = "PlayEmote"
+Converted["_PlayEmote"].Parent = Converted["_AvatarPreview"]
+Converted["_WorldModel"].Parent = Converted["_AvatarPreview"]
+Converted["_UIScale10"].Parent = Converted["_AvatarPreview"]
+Converted["_Drag"].Font = Enum.Font.SourceSans
+Converted["_Drag"].Text = ""
+Converted["_Drag"].TextColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_Drag"].TextSize = 14
+Converted["_Drag"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_Drag"].BackgroundTransparency = 1
+Converted["_Drag"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_Drag"].BorderSizePixel = 0
+Converted["_Drag"].Size = UDim2.new(1, 0, 1, 0)
+Converted["_Drag"].Name = "Drag"
+Converted["_Drag"].Parent = Converted["_AvatarPreview"]
+Converted["_Modal"].BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_Modal"].BackgroundTransparency = 1
+Converted["_Modal"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_Modal"].BorderSizePixel = 0
+Converted["_Modal"].Size = UDim2.new(1, 0, 1, 0)
+Converted["_Modal"].Name = "Modal"
+Converted["_Modal"].Parent = Converted["_AFEMMax"]
+Converted["_Container"].GroupTransparency = 1
+Converted["_Container"].AnchorPoint = Vector2.new(0.5, 0.5)
+Converted["_Container"].BackgroundColor3 = Color3.fromRGB(25, 28, 32) -- [Aesthetic Change]: Modal background color
+Converted["_Container"].BackgroundTransparency = 0.1 -- [Aesthetic Change]: Slight transparency for depth
+Converted["_Container"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_Container"].BorderSizePixel = 0
+Converted["_Container"].Interactable = false
+Converted["_Container"].Position = UDim2.new(0.5, 0, 0.5, 0)
+Converted["_Container"].Size = UDim2.new(0, 300, 0, 200)
+Converted["_Container"].Name = "Container"
+Converted["_Container"].Parent = Converted["_Modal"]
+Converted["_UICorner14"].CornerRadius = UDim.new(0, 16)
+Converted["_UICorner14"].Parent = Converted["_Container"]
+Converted["_UIStroke4"].Color = Color3.fromRGB(60, 63, 68) -- [Aesthetic Change]: Modal border color
+Converted["_UIStroke4"].Thickness = 1.5
+Converted["_UIStroke4"].Parent = Converted["_Container"]
+Converted["_UIListLayout12"].SortOrder = Enum.SortOrder.LayoutOrder
+Converted["_UIListLayout12"].Parent = Converted["_Container"]
+Converted["_Visual"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_Visual"].BackgroundTransparency = 1
+Converted["_Visual"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_Visual"].BorderSizePixel = 0
+Converted["_Visual"].Size = UDim2.new(1, 0, 0, 0)
+Converted["_Visual"].Name = "Visual"
+Converted["_Visual"].Parent = Converted["_Container"]
+Converted["_Desc"].Font = Enum.Font.Gotham
+Converted["_Desc"].RichText = true
+Converted["_Desc"].TextColor3 = Color3.fromRGB(230, 230, 230) -- [Aesthetic Change]: Slightly softer white text
+Converted["_Desc"].TextSize = 20
+Converted["_Desc"].TextWrapped = true
+Converted["_Desc"].TextXAlignment = Enum.TextXAlignment.Left
+Converted["_Desc"].TextYAlignment = Enum.TextYAlignment.Top
+Converted["_Desc"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_Desc"].BackgroundTransparency = 1
+Converted["_Desc"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_Desc"].BorderSizePixel = 0
+Converted["_Desc"].Size = UDim2.new(1, 0, 0, 0)
+Converted["_Desc"].Name = "Desc"
+Converted["_Desc"].Parent = Converted["_Visual"]
+Converted["_UIFlexItem9"].FlexMode = Enum.UIFlexMode.Grow
+Converted["_UIFlexItem9"].Parent = Converted["_Desc"]
+Converted["_Title1"].Font = Enum.Font.GothamBold
+Converted["_Title1"].TextColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_Title1"].TextScaled = true
+Converted["_Title1"].TextSize = 14
+Converted["_Title1"].TextStrokeColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_Title1"].TextWrapped = true
+Converted["_Title1"].TextXAlignment = Enum.TextXAlignment.Left
+Converted["_Title1"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_Title1"].BackgroundTransparency = 1
+Converted["_Title1"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_Title1"].BorderSizePixel = 0
+Converted["_Title1"].LayoutOrder = -10
+Converted["_Title1"].Size = UDim2.new(1, 0, 0, 20)
+Converted["_Title1"].Name = "Title"
+Converted["_Title1"].Parent = Converted["_Visual"]
+Converted["_UIPadding11"].PaddingBottom = UDim.new(0, 16)
+Converted["_UIPadding11"].PaddingLeft = UDim.new(0, 16)
+Converted["_UIPadding11"].PaddingRight = UDim.new(0, 16)
+Converted["_UIPadding11"].PaddingTop = UDim.new(0, 16)
+Converted["_UIPadding11"].Parent = Converted["_Visual"]
+Converted["_UIListLayout13"].SortOrder = Enum.SortOrder.LayoutOrder
+Converted["_UIListLayout13"].Parent = Converted["_Visual"]
+Converted["_UIFlexItem10"].FlexMode = Enum.UIFlexMode.Grow
+Converted["_UIFlexItem10"].Parent = Converted["_Visual"]
+Converted["_Buttons1"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_Buttons1"].BackgroundTransparency = 0.8999999761581421
+Converted["_Buttons1"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_Buttons1"].BorderSizePixel = 0
+Converted["_Buttons1"].Size = UDim2.new(1, 0, 0, 50)
+Converted["_Buttons1"].Name = "Buttons"
+Converted["_Buttons1"].Parent = Converted["_Container"]
+Converted["_UIListLayout14"].Padding = UDim.new(0, 8)
+Converted["_UIListLayout14"].FillDirection = Enum.FillDirection.Horizontal
+Converted["_UIListLayout14"].HorizontalAlignment = Enum.HorizontalAlignment.Center
+Converted["_UIListLayout14"].SortOrder = Enum.SortOrder.LayoutOrder
+Converted["_UIListLayout14"].VerticalAlignment = Enum.VerticalAlignment.Center
+Converted["_UIListLayout14"].Parent = Converted["_Buttons1"]
+Converted["_Sample"].Font = Enum.Font.Gotham
+Converted["_Sample"].TextColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_Sample"].TextScaled = true
+Converted["_Sample"].TextSize = 14
+Converted["_Sample"].TextWrapped = true
+Converted["_Sample"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_Sample"].BackgroundTransparency = 0.8999999761581421
+Converted["_Sample"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_Sample"].BorderSizePixel = 0
+Converted["_Sample"].Size = UDim2.new(0, 0, 1, 0)
+Converted["_Sample"].Visible = false
+Converted["_Sample"].Name = "Sample"
+Converted["_Sample"].Parent = Converted["_Buttons1"]
+Converted["_UICorner15"].Parent = Converted["_Sample"]
+Converted["_UIPadding12"].PaddingBottom = UDim.new(0, 7)
+Converted["_UIPadding12"].PaddingLeft = UDim.new(0, 7)
+Converted["_UIPadding12"].PaddingRight = UDim.new(0, 7)
+Converted["_UIPadding12"].PaddingTop = UDim.new(0, 7)
+Converted["_UIPadding12"].Parent = Converted["_Sample"]
+Converted["_UIFlexItem11"].FlexMode = Enum.UIFlexMode.Grow
+Converted["_UIFlexItem11"].Parent = Converted["_Sample"]
+Converted["_UIPadding13"].PaddingBottom = UDim.new(0, 8)
+Converted["_UIPadding13"].PaddingLeft = UDim.new(0, 8)
+Converted["_UIPadding13"].PaddingRight = UDim.new(0, 8)
+Converted["_UIPadding13"].PaddingTop = UDim.new(0, 8)
+Converted["_UIPadding13"].Parent = Converted["_Buttons1"]
+Converted["_UIScale11"].Scale = 1.100000023841858
+Converted["_UIScale11"].Parent = Converted["_Container"]
+Converted["_GrabArea"].Font = Enum.Font.SourceSans
+Converted["_GrabArea"].Text = ""
+Converted["_GrabArea"].TextColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_GrabArea"].TextSize = 14
+Converted["_GrabArea"].AnchorPoint = Vector2.new(0.5, 0)
+Converted["_GrabArea"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_GrabArea"].BackgroundTransparency = 1
+Converted["_GrabArea"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_GrabArea"].BorderSizePixel = 0
+Converted["_GrabArea"].Position = UDim2.new(0.5, 0, 0, 0)
+Converted["_GrabArea"].Size = UDim2.new(0, 200, 0, 50)
+Converted["_GrabArea"].Name = "GrabArea"
+Converted["_GrabArea"].Parent = Converted["_AFEMMax"]
+Converted["_Open1"].Font = Enum.Font.SourceSans
+Converted["_Open1"].Text = ""
+Converted["_Open1"].TextColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_Open1"].TextSize = 14
+Converted["_Open1"].AnchorPoint = Vector2.new(0.5, 0.5)
+Converted["_Open1"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_Open1"].BackgroundTransparency = 1
+Converted["_Open1"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_Open1"].BorderSizePixel = 0
+Converted["_Open1"].Interactable = false
+Converted["_Open1"].Position = UDim2.new(0.5, 0, 0.5, 0)
+Converted["_Open1"].Size = UDim2.new(0, 50, 0, 50)
+Converted["_Open1"].ZIndex = 99
+Converted["_Open1"].Name = "Open"
+Converted["_Open1"].Parent = Converted["_AFEMMax"]
+
+-- Module Scripts:
+local module_scripts = {}
+do -- Module: StarterGui.AFEMMax.FUNCTIONS
+    local script = Instance.new("ModuleScript")
+    script.Name = "FUNCTIONS"
+    script.Parent = Converted["_AFEMMax"]
+    local function module_script()
+		local FUNCTIONSmodule = {}
+		
+		
+		repeat task.wait() until getgenv().AFEMLibraries
+		local ts = game:GetService("TweenService") -- so what
+		local psv = getgenv().AFEMLibraries.PSV
+		
+		local pointSaveAFEM = psv.new("AFEMMaxConf")
+		
+		local mainEquippedPack = nil
+		local categoryEquippedPacks = {} 
+		
+		
+		function FUNCTIONSmodule.playanim(id)
+			local anim
+			anim = Instance.new("Animation")
+			anim.AnimationId = id
+		
+		
+			local animator = game.Players.LocalPlayer.Character.Humanoid:FindFirstChild("Animator")
+			local animate = game.Players.LocalPlayer.Character:FindFirstChild("Animate")
+			for _, tr in pairs(animator:GetPlayingAnimationTracks()) do
+				tr:Stop(0)
+			end
+		
+			animate.PlayEmote:Invoke(anim)
+		
+		
+		
+		end
+		
+		
+		function FUNCTIONSmodule.pullList()
+			--task.wait(5)
+			local http = game:GetService("HttpService")
+			
+		
+			local emList
+			local packList
+		
+			local s = pcall(function()
+				print("[AFEM] -  Pulling emotes from YARHM website...")
+				emList = http:JSONDecode(game:HttpGet("https://raw.githubusercontent.com/Joystickplays/AFEM/refs/heads/main/emotes.json"))
+			end)
+			if not s then
+				print("[AFEM] - Getting from website failed. Using fallback...")
+				emList = http:JSONDecode('[{"id":14353423348,"animationid":"http://www.roblox.com/asset/?id=14352343065","name":"BabyQueen-BouncyTwirl"},{"id":14353421343,"animationid":"http://www.roblox.com/asset/?id=14352340648","name":"BabyQueen-FaceFrame"},{"id":16553249658,"animationid":"http://www.roblox.com/asset/?id=16553163212","name":"MaeStephens-PianoHands"}]')
+			end
+			print("[AFEM] - Emote list listed.")
+		
+			local s = pcall(function()
+				print("[AFEM] -  Pulling animation packs from YARHM website...")
+				packList = http:JSONDecode(game:HttpGet("https://raw.githubusercontent.com/Joystickplays/AFEM/refs/heads/main/animationpacks.json"))
+			end)
+			if not s then
+				print("[AFEM] - Getting from website failed. Using fallback...")
+				packList = http:JSONDecode('[{"_comment":"All animation IDs has been pulled independently by the YARHM Team. If you are gonna use this for your own emotes menu, please credit us. We will be updating this list periodically and automatically."},{"Animations":{"idle":{"Animation2":"http://www.roblox.com/asset/?id=10921248831","Animation1":"http://www.roblox.com/asset/?id=10921248039"},"climb":{"ClimbAnim":"http://www.roblox.com/asset/?id=10921247141"},"run":{"RunAnim":"http://www.roblox.com/asset/?id=10921250460"},"swim":{"Swim":"http://www.roblox.com/asset/?id=10921253142"},"swimidle":{"SwimIdle":"http://www.roblox.com/asset/?id=10921253767"},"jump":{"JumpAnim":"http://www.roblox.com/asset/?id=10921252123"},"fall":{"FallAnim":"http://www.roblox.com/asset/?id=10921251156"},"pose":{"RobotPose":"http://www.roblox.com/asset/?id=10921249579"},"walk":{"WalkAnim":"http://www.roblox.com/asset/?id=10921255446"}},"BundleId":82,"Name":"Robot ","ProductId":8429510719773869}]')
+			end
+			print("[AFEM] - Animation packs listed.")
+		
+			print("[AFEM] - Finding added custom emotes...")
+			if pointSaveAFEM:get("ExtraEmotes") then
+				local extraEmotes = http:JSONDecode(pointSaveAFEM:get("ExtraEmotes"), "[]")
+		
+				table.move(extraEmotes, 1, #extraEmotes, #emList + 1, emList)	
+			end
+		
+		
+			getgenv().AFEMListing = {}
+		
+			getgenv().AFEMListing.Emotes = emList
+			getgenv().AFEMListing.AnimationPacks = packList
+		end
+		
+		local itemsel = script.Parent.Menu.Area.ItemSelect
+		
+		local emotesCurrentPage = 1
+		local emoteSearchQuery = ""
+		local animPacksCurrentPage = 1
+		local itemsPerPage = 21
+		
+		local function getPagination(list, perPage, currentPage)
+			local totalItems = #list
+			local totalPages = math.ceil(totalItems / perPage)
+			return {
+				totalPages = totalPages,
+				currentPage = currentPage
+			}
+		end
+		
+		function FUNCTIONSmodule.getEmotePagination()
+			repeat task.wait() until getgenv().AFEMListing
+			local emoteList = getgenv().AFEMListing and getgenv().AFEMListing.Emotes or {}
+			return getPagination(emoteList, itemsPerPage, emotesCurrentPage)
+		end
+		
+		function FUNCTIONSmodule.getAnimPackPagination()
+			repeat task.wait() until getgenv().AFEMListing
+			local animPackList = getgenv().AFEMListing and getgenv().AFEMListing.AnimationPacks or {}
+			return getPagination(animPackList, itemsPerPage, animPacksCurrentPage)
+		end
+		
+		function levenshtein(str1, str2)
+			local len1 = #str1
+			local len2 = #str2
+			local matrix = {}
+		
+			for i = 0, len1 do
+				matrix[i] = {}
+				matrix[i][0] = i
+			end
+			for j = 0, len2 do
+				matrix[0][j] = j
+			end
+		
+			for i = 1, len1 do
+				for j = 1, len2 do
+					local cost = (str1:sub(i, i) == str2:sub(j, j)) and 0 or 1
+					matrix[i][j] = math.min(
+						matrix[i - 1][j] + 1,     -- Deletion
+						matrix[i][j - 1] + 1,     -- Insertion
+						matrix[i - 1][j - 1] + cost  -- Substitution
+					)
+				end
+			end
+		
+			return matrix[len1][len2]
+		end
+		
+		local function getInitials(str)
+			local initials = ""
+			for word in str:gmatch("%w+") do
+				initials = initials .. word:sub(1,1)
+			end
+			return initials
+		end
+		
+		local function splitWords(str)
+			local words = {}
+			for word in str:gmatch("%w+") do
+				table.insert(words, word)
+			end
+			return words
+		end
+		
+		function fuzzySearch(query, items, minConfidence)
+			query = query:lower()
+			minConfidence = minConfidence or 0.5
+			local results = {}
+		
+			for _, item in ipairs(items) do
+				local normalized = item:lower()
+				local words = splitWords(normalized)
+				local initials = getInitials(normalized)
+				local start = normalized:find(query, 1, true)
+		
+				local relevant = start and normalized:sub(start, start + #query - 1) or normalized
+				local distance = levenshtein(query, relevant)
+				local maxLen = math.max(#query, #relevant)
+				local confidence = 1 - (distance / maxLen)
+		
+				if normalized == query then
+					confidence = confidence + 0.5
+				elseif normalized:sub(1, #query) == query then
+					confidence = confidence + 0.25
+				elseif start then
+					confidence = confidence + 0.15
+				end
+		
+				if initials == query then
+					confidence = confidence + 0.5
+				elseif initials:sub(1, #query) == query then
+					confidence = confidence + 0.2
+				end
+		
+				for _, word in ipairs(words) do
+					if word:sub(1, #query) == query then
+						confidence = confidence + 0.1
+						break
+					end
+				end
+		
+				if confidence >= minConfidence then
+					table.insert(results, {
+						item = item,
+						confidence = math.min(confidence, 1),
+						isExact = normalized == query
+					})
+				end
+			end
+		
+			table.sort(results, function(a, b)
+				if a.isExact ~= b.isExact then
+					return a.isExact
+				elseif a.confidence ~= b.confidence then
+					return a.confidence > b.confidence
+				else
+					return a.item < b.item
+				end
+			end)
+		
+			local sortedItems = {}
+			for _, result in ipairs(results) do
+				table.insert(sortedItems, { item = result.item, confidence = result.confidence })
+			end
+		
+			return sortedItems
+		end
+		
+		function FUNCTIONSmodule.searchEmotes(query, minConfidence)
+			local emoteList = getgenv().AFEMListing and getgenv().AFEMListing.Emotes or {}
+			local names = {}
+			for _, emote in ipairs(emoteList) do
+				if not emote["_comment"] then
+					table.insert(names, emote.name)
+				end
+			end
+			local results = fuzzySearch(query, names, minConfidence)
+			local filtered = {}
+			for _, result in ipairs(results) do
+				for _, emote in ipairs(emoteList) do
+					if emote.name == result.item then
+						table.insert(filtered, emote)
+						break
+					end
+				end
+			end
+			return filtered
+		end
+		
+		local function createPaginatedListing(list, area, page, perPage, searchQuery, buttonSetup)
+			local filteredList = list
+			if searchQuery and #searchQuery > 0 then
+				local names = {}
+				for _, item in ipairs(list) do
+					if not item["_comment"] then
+						table.insert(names, item.name)
+					end
+				end
+				local results = fuzzySearch(searchQuery, names)
+				local temp = {}
+				for _, result in ipairs(results) do
+					for _, item in ipairs(list) do
+						if item.name == result.item then
+							table.insert(temp, item)
+							break
+						end
+					end
+				end
+				filteredList = temp
+			end
+			local totalItems = #filteredList
+			local totalPages = math.ceil(totalItems / perPage)
+			if page < 1 then page = 1 end
+			if page > totalPages then page = totalPages end
+		
+			for _, v in ipairs(area:GetChildren()) do
+				if v:IsA("Frame") or v.Name == "NextPageButton" or v.Name == "PrevPageButton" then
+					v:Destroy()
+				end
+			end
+		
+			local startIdx = (page - 1) * perPage + 1
+			local endIdx = math.min(page * perPage, totalItems)
+		
+			for i = startIdx, endIdx do
+				local item = filteredList[i]
+				if item and not item["_comment"] then
+					buttonSetup(item, area, i)
+				end
+			end
+		end
+		
+		function getAnimationPackFromBundleId(bID)
+			if bID == nil then return nil end
+			repeat task.wait() until getgenv().AFEMListing
+			local animPackList = getgenv().AFEMListing and getgenv().AFEMListing.AnimationPacks or {}
+			for _, v in ipairs(animPackList) do
+				if v["BundleId"] == bID then
+					return v
+				end
+			end
+			return nil
+		end
+		
+		function getAnimatorScript()
+			local char = game.Players.LocalPlayer.Character
+			if not char then warn("[AFEM] - No character. Waiting for one...") char = game.Players.LocalPlayer.CharacterAdded:Wait() end
+			local hum = char:WaitForChild("Humanoid", 10)
+			if not hum then warn("[AFEM] - No humanoid in character.") return end
+			if hum.RigType.Name ~= "R15" then warn("[AFEM] - Your character is not R15") FUNCTIONSmodule.notification("Your character needs to be R15.") return end
+			local animateScript = char:FindFirstChild("Animate")
+			if not animateScript then warn("[AFEM] - Your character does not have the Animate script!") return end
+			return animateScript
+		end
+		
+		
+		function FUNCTIONSmodule.applyPack(bID, new, save)
+			mainEquippedPack = bID
+			local animPack = getAnimationPackFromBundleId(tonumber(bID))
+			if not animPack then
+				warn("[AFEM] - Can't find this animation pack.")
+				return
+			end
+		
+			local animateScript = getAnimatorScript()
+			if not animateScript then return end
+		
+			for _, animObj in ipairs(animateScript:GetChildren()) do
+				if animPack["Animations"][animObj.Name] then
+					if new then
+						pointSaveAFEM:remove("EquippedPack_" .. animObj.Name)
+						categoryEquippedPacks[animObj.Name] = nil
+					end
+					for _, animAsset in ipairs(animObj:GetChildren()) do
+						if animPack["Animations"][animObj.Name][animAsset.Name] then
+							animAsset.AnimationId = animPack["Animations"][animObj.Name][animAsset.Name]
+						end
+					end
+				end
+			end
+		
+			print("[AFEM] - Animation pack applied!")
+			if save then
+				local s, e = pcall(function()
+					pointSaveAFEM:set("MainEquippedPack", tostring(bID))
+					print("[AFEM] - Current main pack persistently saved")
+				end)
+				if not s then
+					warn("[AFEM] - Failed to save persistent main pack, not supported?")
+					warn(e)
+				end
+			end
+		end
+		
+		local selectedButton = nil
+		function FUNCTIONSmodule.modal(t,d,b)
+			if not t then t = "Alert" end
+			if not d then d = "" end
+			if not b then b = {} end
+		
+		
+			local modal = script.Parent.Modal
+			
+			modal.Container.Visual.Title.Text = t
+			modal.Container.Visual.Desc.Text = d
+			
+			for _, already in ipairs(modal.Container.Buttons:GetChildren()) do
+				if already:IsA("TextButton") and already.Name ~= "Sample" then
+					already:Destroy()
+				end
+			end
+			for _, button in pairs(b) do
+				local bClone = modal.Container.Buttons.Sample:Clone()
+				bClone.Text = button
+				bClone.Name = button	
+				bClone.Parent = modal.Container.Buttons
+				bClone.Visible = true
+				
+				bClone.MouseButton1Click:Connect(function()
+					selectedButton = button
+					FUNCTIONSmodule.modalClose()
+				end)
+			end
+			
+			local twn = TweenInfo.new(0.4, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out)
+			ts:Create(modal, twn, {
+				BackgroundTransparency = 0.7
+			}):Play()
+			
+			ts:Create(modal.Container, twn, {
+				GroupTransparency = 0
+			}):Play()
+			
+			ts:Create(modal.Container.UIScale, twn, {
+				Scale = 1
+			}):Play()
+			
+			ts:Create(modal.Container.UIStroke, twn, {
+				Transparency = 0.8
+			}):Play()
+			
+			
+			modal.Container.Interactable = true
+		end
+		
+		function FUNCTIONSmodule.modalClose()
+		
+			local modal = script.Parent.Modal
+		
+		
+			local twn = TweenInfo.new(0.4, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out)
+			ts:Create(modal, twn, {
+				BackgroundTransparency = 1
+			}):Play()
+		
+			ts:Create(modal.Container, twn, {
+				GroupTransparency = 1
+			}):Play()
+		
+			ts:Create(modal.Container.UIScale, twn, {
+				Scale = 1.1
+			}):Play()
+		
+			ts:Create(modal.Container.UIStroke, twn, {
+				Transparency = 1
+			}):Play()
+			
+			modal.Container.Interactable = false
+		end
+		
+		function FUNCTIONSmodule.waitForModal()
+			repeat task.wait() until selectedButton
+			FUNCTIONSmodule.modalClose()
+			local p = selectedButton
+			selectedButton = nil
+			return p
+		end
+		
+		function FUNCTIONSmodule.refreshEmotes(page, search)
+			if page then emotesCurrentPage = page end
+			if search then emoteSearchQuery = search end
+			local area = itemsel.Emotes.Listing
+			repeat task.wait() until getgenv().AFEMListing.Emotes
+			local emoteList = getgenv().AFEMListing.Emotes
+			createPaginatedListing(emoteList, area, emotesCurrentPage, itemsPerPage, search or "", function(emote, parent, index)
+				local buttonClone = itemsel.ItemListTemplate:Clone()
+				buttonClone.Name = emote["name"] .. "EMOTE"
+				buttonClone.Clickable.Position = UDim2.new(0.5, 0, 1.6, 0)
+				buttonClone.Visible = true
+				buttonClone.Parent = parent
+				buttonClone.Clickable.Details.Title.Text = emote["name"]
+				buttonClone.Clickable.Thumbnail.Image = "rbxthumb://type=Asset&id=" .. emote["id"] .. "&w=420&h=420"
+				buttonClone.Clickable.MouseButton1Click:Connect(function()
+					FUNCTIONSmodule.playanim(emote["animationid"])
+					script.Parent.Menu.MenuStateChange:Fire(false)
+				end)
+				
+				
+				ts:Create(buttonClone.Clickable, TweenInfo.new(.3, Enum.EasingStyle.Circular, Enum.EasingDirection.Out, 0, false, ((index - (itemsPerPage * (emotesCurrentPage - 1))) / 100)), {
+					Position = UDim2.new(0.5, 0, 0.5, 0)
+				}):Play()
+				
+				buttonClone.Clickable.Details.Buttons.Play.MouseButton1Click:Connect(function()
+					FUNCTIONSmodule.playanim(emote["animationid"])
+				end)
+				
+				buttonClone.Clickable.Details.Buttons.Preview.MouseButton1Click:Connect(function()
+					script.Parent.Menu.AvatarPreview.PlayEmote:Fire(emote["animationid"], true)
+				end)
+		
+				if emote["_special"] == "custom" then
+                    -- The logic to enable the custom effect is kept.
+                    -- The visual effect itself was modified in the properties section to be less distracting.
+					buttonClone.Clickable:FindFirstChild("UIStroke"):FindFirstChild("CustomEffect").Enabled = true
+				end
+			end)
+			
+			local paginationInfo = FUNCTIONSmodule.getEmotePagination()
+			local paginationUIBar = itemsel.Emotes.PaginationBar
+		
+			local tweenInfo = TweenInfo.new(0.4, Enum.EasingStyle.Cubic)
+			local SCALE_ACTIVE, SCALE_INACTIVE = 1, 0.3
+			local TRANSPARENT, OPAQUE = 1, 0
+		
+			local function updatePageButton(button, isActive)
+				ts:Create(button.UIScale, tweenInfo, { Scale = isActive and 1 or 0.3 }):Play()
+				ts:Create(button.Label, tweenInfo, { TextTransparency = isActive and 0 or 1 }):Play()
+			end
+		
+			local function updateNavButton(button, enabled)
+				ts:Create(button.UIScale, tweenInfo, { Scale = enabled and 1 or 0 }):Play()
+			end
+		
+			for pagePagination = 1, paginationInfo.totalPages do
+				local button = paginationUIBar:FindFirstChild("Page" .. pagePagination)
+				if not button then
+					button = paginationUIBar.SamplePage:Clone()
+					button.Name = "Page" .. pagePagination
+					button.Label.Text = pagePagination
+					button.Parent = paginationUIBar
+					button.Visible = true
+				end
+				updatePageButton(button, page == pagePagination)
+			end
+		
+			updateNavButton(itemsel.Emotes.PaginationBar.Next, emotesCurrentPage < paginationInfo.totalPages)
+			updateNavButton(itemsel.Emotes.PaginationBar.Previous, emotesCurrentPage > 1)
+		end
+		
+		function FUNCTIONSmodule.emotePagination(next)
+			if next == true then
+				emotesCurrentPage += 1
+			else
+				emotesCurrentPage -= 1
+			end
+			FUNCTIONSmodule.refreshEmotes(emotesCurrentPage, emoteSearchQuery)
+		end
+		
+		
+		function FUNCTIONSmodule.refreshAnimPacks(page, search)
+			if page then animPacksCurrentPage = page end
+			local area = itemsel.AnimationPacks.Listing
+			repeat task.wait() until getgenv().AFEMListing.AnimationPacks
+			local animPackList = getgenv().AFEMListing.AnimationPacks
+			local searchQuery = search or ""
+			createPaginatedListing(animPackList, area, animPacksCurrentPage, itemsPerPage, searchQuery, function(pack, parent)
+				local buttonClone = itemsel.ItemListTemplate:Clone()
+				buttonClone.Name = (pack["Name"] or "Pack") .. "PACK"
+				buttonClone.Visible = true
+				buttonClone.Parent = parent
+				buttonClone.Clickable.Details.Title.Text = pack["Name"] or "Unnamed Pack"
+				buttonClone.Clickable.Details.Buttons.Play.Visible = false
+				if pack["CustomImage"] then
+					buttonClone.Clickable.Thumbnail.Image = pack["CustomImage"]
+				else
+					buttonClone.Clickable.Thumbnail.Image = "rbxthumb://type=BundleThumbnail&id=" .. pack["BundleId"] .. "&w=420&h=420"
+				end
+				buttonClone.Clickable.MouseButton1Click:Connect(function()
+					FUNCTIONSmodule.applyPack(pack["BundleId"], true, true)
+					FUNCTIONSmodule.modal("Pack applied", "Animation pack has been applied.", {"Okay"})
+					--script.Parent.Menu.MenuStateChange:Fire(false)
+				end)
+			end)
+			local paginationInfo = FUNCTIONSmodule.getAnimPackPagination()
+			local paginationUIBar = itemsel.AnimationPacks.PaginationBar
+		
+			local tweenInfo = TweenInfo.new(0.4, Enum.EasingStyle.Cubic)
+		
+			local function updatePageButton(button, isActive)
+				ts:Create(button.UIScale, tweenInfo, { Scale = isActive and 1 or 0.3 }):Play()
+				ts:Create(button.Label, tweenInfo, { TextTransparency = isActive and 0 or 1 }):Play()
+			end
+		
+			local function updateNavButton(button, enabled)
+				ts:Create(button.UIScale, tweenInfo, { Scale = enabled and 1 or 0 }):Play()
+			end
+		
+			for pagePagination = 1, paginationInfo.totalPages do
+				local button = paginationUIBar:FindFirstChild("Page" .. pagePagination)
+				if not button then
+					button = paginationUIBar.SamplePage:Clone()
+					button.Name = "Page" .. pagePagination
+					button.Label.Text = pagePagination
+					button.Parent = paginationUIBar
+					button.Visible = true
+				end
+				updatePageButton(button, page == pagePagination)
+			end
+		
+			updateNavButton(itemsel.AnimationPacks.PaginationBar.Next, animPacksCurrentPage < paginationInfo.totalPages)
+			updateNavButton(itemsel.AnimationPacks.PaginationBar.Previous, animPacksCurrentPage > 1)
+		end
+		
+		return FUNCTIONSmodule
+		
+    end
+    module_scripts[script] = module_script
+end
+do -- Module: StarterGui.AFEMMax.SBT
+    local script = Instance.new("ModuleScript")
+    script.Name = "SBT"
+    script.Parent = Converted["_AFEMMax"]
+    local function module_script()
+		-- Spring based tween
+		
+		
+		local SpringF = function()
+			local EqF = function()
+				local Functions = {}
+		
+				local function OverDamping(m, a, k, y0, v0, f) -- Removed type annotations
+					local delta = a * a - 4 * k / m
+					local d = -1 / 2
+					local w1 = a + math.sqrt(delta)
+					local w2 = a - math.sqrt(delta)
+					local r1, r2 = d * w1, d * w2
+					local c1, c2 = (r2 * y0 - v0) / (r2 - r1), (r1 * y0 - v0) / (r1 - r2)
+					local yp = f / k
+		
+					return {
+						Offset = function(t)
+							return c1 * math.exp(r1 * t) + c2 * math.exp(r2 * t) + yp
+						end,
+						Velocity = function(t)
+							return c1 * r1 * math.exp(r1 * t) + c2 * r2 * math.exp(r2 * t)
+						end,
+						Acceleration = function(t)
+							return c1 * r1 * r1 * math.exp(r1 * t) + c2 * r2 * r2 * math.exp(r2 * t)
+						end
+					}
+				end
+		
+				local function CriticalDamping(m, a, k, y0, v0, f) -- Removed type annotations
+					local r = -a / 2
+					local c1, c2 = y0, v0 - r * y0
+					local yp = f / k
+		
+					return {
+						Offset = function(t)
+							return math.exp(r * t) * (c1 + c2 * t) + yp
+						end,
+						Velocity = function(t)
+							return math.exp(r * t) * (c2 * r * t + c1 * r + c2)
+						end,
+						Acceleration = function(t)
+							return r * math.exp(r * t) * (c2 * r * t + c1 * r + 2 * c2)
+						end
+					}
+				end
+		
+				local function UnderDamping(m, a, k, y0, v0, f) -- Removed type annotations
+					local delta = a * a - 4 * k / m
+					local r = -a / 2
+					local s = math.sqrt(-delta)
+					local c1, c2 = y0, (v0 - (r * y0)) / s
+					local yp = f / k
+		
+					return {
+						Offset = function(t)
+							return math.exp(r * t) * (c1 * math.cos(s * t) + c2 * math.sin(s * t)) + yp
+						end,
+						Velocity = function(t)
+							return -math.exp(r * t) * ((c1 * s - c2 * r) * math.sin(s * t) + (-c2 * s - c1 * r) * math.cos(s * t))
+						end,
+						Acceleration = function(t)
+							return -math.exp(r * t) * ((c2 * s * s + 2 * c1 * r * s - c2 * r * r) * math.sin(s * t) + (c1 * s * s - 2 * c2 * r * s - c1 * r * r) * math.cos(s * t))
+						end
+					}
+				end
+		
+				function Functions.F(Spring)
+					local y0, v0, f = Spring.InitialOffset, Spring.InitialVelocity, Spring.ExternalForce
+					local m, a, k = Spring.Mass, Spring.Damping, Spring.Constant
+					local delta = a * a - 4 * k / m
+		
+					if delta > 0 then
+						return OverDamping(m, a, k, y0, v0, f)
+					elseif delta == 0 then
+						return CriticalDamping(m, a, k, y0, v0, f)
+					else
+						return UnderDamping(m, a, k, y0, v0, f)
+					end
+				end
+		
+				return Functions
+			end
+			local Eq = EqF()
+		
+			-- Declarations --
+		
+		
+			local sqrt = math.sqrt
+		
+			-- Constants --
+			local PI = math.pi
+		
+			local SPRING_PROPERTIES = {
+				OFFSET = "Offset",
+				VELOCITY = "Velocity",
+				ACCELERATION = "Acceleration",
+				GOAL = "Goal",
+				FREQUENCY = "Frequency",
+			}
+		
+			local SPRING_PROPERTIES_FORMAT_STRING_BASIC = ""
+			local SPRING_PROPERTIES_FORMAT_STRING_ADVANCED = ""
+		
+			-- Class --
+			local Spring = {}
+			local SpringFunctions = {}
+		
+			SpringFunctions.__index = function(self: SpringObject, index: any)
+				local INDEX_HANDLERS = {
+					[SPRING_PROPERTIES.OFFSET] = function()
+						local t: number = tick() - self.StartTick
+						local F: any = self.F -- Use 'any' to handle dynamic types
+						local offset: number = F.Offset(t)
+						return offset
+					end,
+					[SPRING_PROPERTIES.VELOCITY] = function()
+						local t: number = tick() - self.StartTick
+						local F: any = self.F
+						local velocity: number = F.Velocity(t)
+						return velocity
+					end,
+					[SPRING_PROPERTIES.ACCELERATION] = function()
+						local t: number = tick() - self.StartTick
+						local F: any = self.F
+						local acceleration: number = F.Acceleration(t)
+						return acceleration
+					end,
+					[SPRING_PROPERTIES.GOAL] = function()
+						local externalForce = self.ExternalForce
+						local constant = self.Constant
+						return externalForce / constant
+					end,
+					[SPRING_PROPERTIES.FREQUENCY] = function()
+						local damping = self.Damping
+						local stiffness = self.Constant
+						local mass = self.Mass
+						return sqrt(-damping * damping + 4 * stiffness / mass) / (2 * PI)
+					end,
+				}
+		
+				local rawValue = rawget(self, index)
+				if rawValue ~= nil then
+					return rawValue
+				end
+		
+				local indexHandler = INDEX_HANDLERS[index]
+				if indexHandler ~= nil then
+					return indexHandler()
+				end
+		
+				return SpringFunctions[index]
+			end
+		
+			SpringFunctions.__tostring = function(self: SpringObject)
+				local t: number = tick() - self.StartTick
+				local F: any = self.F
+				local aose: boolean = self.AdvancedObjectStringEnabled
+				local formattedString: string
+		
+				if not aose then
+					formattedString = string.format(
+						SPRING_PROPERTIES_FORMAT_STRING_BASIC,
+						F.Offset(t),
+						F.Velocity(t),
+						F.Acceleration(t)
+					)
+				else
+					formattedString = string.format(
+						SPRING_PROPERTIES_FORMAT_STRING_ADVANCED,
+						self.Mass,
+						self.Damping,
+						self.Constant,
+						self.Goal,
+						self.Frequency,
+						self.InitialOffset,
+						self.InitialVelocity,
+						self.ExternalForce,
+						self.StartTick,
+						F.Offset(t),
+						F.Velocity(t),
+						F.Acceleration(t)
+					)
+				end
+		
+				return formattedString
+			end
+		
+			-- Functions --
+			function Spring.fromDurationAndBounce(duration: number, bounce: number)
+				local mass = 1 -- Assume mass is 1 for simplicity
+				local stiffness = (2 * math.pi / duration) ^ 2 * mass
+				local damping = 2 * bounce * math.sqrt(mass * stiffness)
+		
+				return {
+					mass,
+					damping,
+					stiffness
+				}
+			end
+		
+			-- The spring object constructor
+			-- m: mass of object, a: damping constant, k: spring constant, y0: initial offset, v0: initial velocity, f: external force
+			function Spring.new(mass: number, damping: number, stiffness: number, y0: number?, v0: number?, goal: number?) -- Using a second order differential equation
+				-- Make sure values are valid
+				assert(mass > 0, "Mass for spring system cannot be less than or equal to 0")
+				assert(stiffness > 0, "Spring constant for spring system cannot be less than or equal to 0")
+		
+				-- Double check to make sure y0, v0 and f are numbers and not nil values
+				y0 = y0 or 0
+				v0 = v0 or 0
+				goal = goal or 0
+		
+				local extf = goal * stiffness
+		
+				-- New spring object
+				local _Spring = {
+					-- Set initial stuff
+					Mass = mass,
+					Damping = damping,
+					Constant = stiffness,
+					InitialOffset = y0 - goal,
+					InitialVelocity = v0,
+					ExternalForce = extf,
+		
+					-- Set boolean stuff
+					AdvancedObjectStringEnabled = false,
+		
+					-- Set cache stuff
+					StartTick = 0,
+				}
+		
+				-- Adds the SpringFunctions to the spring object and returns the spring
+				setmetatable(_Spring, SpringFunctions);
+		
+				-- Starts the spring and returns the spring object
+				(_Spring :: SpringObject):Reset() -- _Spring and SpringObject are the same thing except SpringObject has a metatable, and Luau can't see metatable functions
+				return _Spring
+			end
+		
+			-- The spring object constructor using frequency instead of spring constant
+			function Spring.fromFrequency(mass: number, damping: number, frequency: number, y0: number?, v0: number?, goal: number?)
+				-- Make sure values are valid
+				assert(mass > 0, "Mass for spring system cannot be less than or equal to 0")
+				assert(frequency > 0, "Spring frequency for spring system cannot be less than or equal to 0")
+		
+				local stiffness = 0.25 * mass * (4 * PI * PI * frequency * frequency + damping * damping)
+		
+				y0 = y0 or 0
+				v0 = v0 or 0
+				goal = goal or 0
+		
+				local extf = goal * stiffness
+		
+				local _Spring = {
+					-- Set initial stuff
+					Mass = mass,
+					Damping = damping,
+					Constant = stiffness,
+					InitialOffset = y0 - goal,
+					InitialVelocity = v0,
+					ExternalForce = extf,
+		
+					-- Set boolean stuff
+					AdvancedObjectStringEnabled = false,
+		
+					-- Set cache stuff
+					StartTick = 0,
+				}
+		
+				setmetatable(_Spring, SpringFunctions);
+		
+				(_Spring :: SpringObject):Reset()
+				return _Spring
+			end
+		
+			-- Starts the spring
+			function SpringFunctions:Reset()
+				-- Update the F of the spring
+				self.F = Eq.F(self)
+		
+				-- Set the start tick to the current tick and set enabled
+				self.StartTick = tick()
+			end
+		
+			-- Sets the external force of the spring object to the given force
+			function SpringFunctions:SetExternalForce(force: number)
+				-- Set properties
+				self.ExternalForce = force
+				self.InitialOffset = self.Offset - force / self.Constant
+				self.InitialVelocity = self.Velocity
+				print(self.ExternalForce)
+				-- Reset spring
+				self:Reset()
+			end
+		
+			-- Sets the external force of the spring object such that
+			-- the spring object eventually reaches this number
+			function SpringFunctions:SetGoal(goal: number)
+				-- Set properties
+				self.ExternalForce = goal * self.Constant
+				self.InitialOffset = self.Offset - goal
+				self.InitialVelocity = self.Velocity
+		
+				-- Reset spring
+				self:Reset()
+			end
+		
+			-- Sets the stiffness (spring constant) of the spring object
+			-- such that the frequency of the spring is equal to the
+			-- given frequency
+			function SpringFunctions:SetFrequency(frequency: number)
+				-- Set properties
+				self.Constant = 0.25 * self.Mass * (4 * PI * PI * frequency * frequency + self.Damping * self.Damping)
+				self.InitialOffset = self.Offset
+				self.InitialVelocity = self.Velocity
+		
+				-- Reset spring
+				self:Reset()
+			end
+		
+			-- Sets the damping of the spring object such that the damping
+			-- is enough to trigger critical damping; the least amount of damping
+			-- a system can have before it becomes an oscillating system
+			function SpringFunctions:SnapToCriticalDamping()
+				-- Set properties
+				self.Damping = 2 * sqrt(self.Constant / self.Mass)
+				self.InitialOffset = self.Offset
+				self.InitialVelocity = self.Velocity
+		
+				-- Reset spring
+				self:Reset()
+			end
+		
+			-- Sets the offset of the spring object to the given offset
+			function SpringFunctions:SetOffset(offset: number, zeroVelocity: boolean?)
+				-- Set properties and restart spring
+				self.InitialOffset = offset - self.Goal
+				self.InitialVelocity = zeroVelocity and 0 or self.Velocity
+		
+				-- Reset spring
+				self:Reset()
+			end
+		
+			-- Adds the given offset to the spring object
+			function SpringFunctions:AddOffset(offset: number)
+				-- Set properties and restart spring
+				self.InitialOffset = self.Offset + offset
+				self.InitialVelocity = self.Velocity
+		
+				-- Reset spring
+				self:Reset()
+			end
+		
+			-- Sets the velocity of the spring object to the given velocity
+			function SpringFunctions:SetVelocity(velocity: number)
+				-- Set properties and restart spring
+				self.InitialOffset = self.Offset
+				self.InitialVelocity = velocity
+		
+				-- Reset spring
+				self:Reset()
+			end
+		
+			-- Adds the given velocity to the spring object
+			function SpringFunctions:AddVelocity(velocity: number)
+				-- Set properties and restart spring
+				self.InitialOffset = self.Offset
+				self.InitialVelocity = self.Velocity + velocity
+				self:Reset()
+			end
+		
+			-- Prints the spring properties to the console
+			function SpringFunctions:Print()
+				-- Create string of the object and print
+				local springString = tostring(self)
+				print(springString)
+			end
+		
+			return Spring
+		end
+		local Spring = SpringF()
+		
+		
+		local Run = game:GetService("RunService")
+		local SBT = {}
+		SBT.__index = SBT
+		
+		function SBT.fromDurationAndBounce(duration, bounce)
+			local mass = 1  -- Assume mass is 1 for simplicity
+			local stiffness = (2 * math.pi / duration) ^ 2 * mass
+			local damping = 2 * (1 - bounce) * math.sqrt(mass * stiffness)
+		
+			return {
+				mass,
+				damping,
+				stiffness
+			}
+		end
+		
+		
+		
+		-- Type handlers for different animatable types
+		
+		local typeHandlers = {
+			number = function(obj, property, mass, stiffness, damping)
+				local spring = Spring.new(mass, stiffness, damping, obj[property], 0, obj[property])
+		
+				return {
+					springType = "number",
+					springSet = { spring },
+					updateFunc = function()
+						obj[property] = spring.Offset
+					end,
+					setGoal = function(goal)
+						spring:SetGoal(goal)
+					end,
+					addForce = function(vel)
+						spring:SetExternalForce(vel)
+					end,
+				}
+			end,
+		
+			UDim2 = function(obj, property, mass, stiffness, damping)
+				local springXOffset = Spring.new(mass, stiffness, damping, obj[property].X.Offset, 0, obj[property].X.Offset)
+				local springXScale = Spring.new(mass, stiffness, damping, obj[property].X.Scale, 0, obj[property].X.Scale)
+				local springYOffset = Spring.new(mass, stiffness, damping, obj[property].Y.Offset, 0, obj[property].Y.Offset)
+				local springYScale = Spring.new(mass, stiffness, damping, obj[property].Y.Scale, 0, obj[property].Y.Scale)
+		
+				return {
+					springType = "UDim2",
+					springSet = {
+						XOffset = springXOffset,
+						XScale = springXScale,
+						YOffset = springYOffset,
+						YScale = springYScale
+					},
+					updateFunc = function()
+						obj[property] = UDim2.new(
+							springXScale.Offset,
+							springXOffset.Offset,
+							springYScale.Offset,
+							springYOffset.Offset
+						)
+					end,
+					setGoal = function(goal)
+						springXOffset:SetGoal(goal.X.Offset)
+						springXScale:SetGoal(goal.X.Scale)
+						springYOffset:SetGoal(goal.Y.Offset)
+						springYScale:SetGoal(goal.Y.Scale)
+					end,
+					addForce = function(vel)
+						springXOffset:SetExternalForce(vel.X.Offset)
+						springXScale:SetExternalForce(vel.X.Scale)
+						springYOffset:SetExternalForce(vel.Y.Offset)
+						springYScale:SetExternalForce(vel.Y.Scale)
+					end,
+				}
+			end,
+		
+			Vector2 = function(obj, property, mass, stiffness, damping)
+				local springX = Spring.new(mass, stiffness, damping, obj[property].X, 0, obj[property].X)
+				local springY = Spring.new(mass, stiffness, damping, obj[property].Y, 0, obj[property].Y)
+		
+				return {
+					springType = "Vector2",
+					springSet = {
+						X = springX,
+						Y = springY,
+					},
+					updateFunc = function()
+						obj[property] = Vector2.new(
+							springX.Offset,
+							springY.Offset
+						)
+					end,
+					setGoal = function(goal)
+						springX:SetGoal(goal.X)
+						springY:SetGoal(goal.Y)
+					end,
+					addForce = function(vel)
+						springX:SetExternalForce(vel.X)
+						springY:SetExternalForce(vel.Y)
+					end,
+				}
+			end,
+		
+			Vector3 = function(obj, property, mass, stiffness, damping)
+				local springX = Spring.new(mass, stiffness, damping, obj[property].X, 0, obj[property].X)
+				local springY = Spring.new(mass, stiffness, damping, obj[property].Y, 0, obj[property].Y)
+				local springZ = Spring.new(mass, stiffness, damping, obj[property].Z, 0, obj[property].Z)
+		
+				return {
+					springType = "Vector3",
+					springSet = { springX, springY, springZ },
+					updateFunc = function()
+						obj[property] = Vector3.new(springX.Offset, springY.Offset, springZ.Offset)
+					end,
+					setGoal = function(goal)
+						springX:SetGoal(goal.X)
+						springY:SetGoal(goal.Y)
+						springZ:SetGoal(goal.Z)
+					end,
+					addForce = function(vel)
+						springX:SetExternalForce(vel.X)
+						springY:SetExternalForce(vel.Y)
+						springZ:SetExternalForce(vel.Z)
+					end
+				}
+			end,
+		}
+		
+		function SBT.new(obj, property, mass, stiffness, damping)
+			assert(obj[property], "Property does not exist on object")
+		
+			local propertyType = typeof(obj[property])
+			local handler = typeHandlers[propertyType]
+		
+			if handler then
+				local self = setmetatable({}, SBT)
+				self.obj = obj
+				self.propertyName = property
+				self.updater = nil
+		
+				-- Initialize the spring properties using the handler
+				local springData = handler(obj, property, mass, stiffness, damping)
+				self.springType = springData.springType
+				self.springSet = springData.springSet
+				self.updateFunc = springData.updateFunc
+				self.setGoal = springData.setGoal
+				self.addForce = springData.addForce
+		
+				return self
+			else
+				error("Type not supported: " .. propertyType)
+			end
+		end
+		
+		function SBT:Start()
+			if self.updater then
+				return
+			end
+		
+			for _, spring in pairs(self.springSet) do
+				spring:Reset()
+			end
+		
+			self.updater = Run.RenderStepped:Connect(function(dt)
+				self.updateFunc()
+			end)
+		end
+		
+		function SBT:Stop()
+			if self.updater then
+				self.updater:Disconnect()
+				self.updater = nil
+			end
+		end
+		
+		function SBT:SetGoal(goal)
+			self.setGoal(goal)
+		end
+		
+		function SBT:AddForce(vel)
+			self.addForce(vel)
+		end
+		
+		function SBT:SetParameters(mass, stiffness, damping)
+			for _, spring in pairs(self.springSet) do
+				spring.Mass = mass
+				spring.Stiffness = stiffness
+				spring.Damping = damping
+		
+				spring:Reset()
+			end
+		end
+		
+		return SBT
+		
+    end
+    module_scripts[script] = module_script
+end
+do -- Module: StarterGui.AFEMMax.DraggableObject
+    local script = Instance.new("ModuleScript")
+    script.Name = "DraggableObject"
+    script.Parent = Converted["_AFEMMax"]
+    local function module_script()
+		local function a(b,c,d)local e=d.AbsoluteSize;local f=b.X.Scale*e.X+b.X.Offset;local g=b.Y.Scale*e.Y+b.Y.Offset;local h=c.X.Scale*e.X+c.X.Offset;local i=c.Y.Scale*e.Y+c.Y.Offset;local j=f+h<=0;local k=f>=e.X;local l=g+i<=0;local m=g>=e.Y;return j or k or l or m end;local n=UDim2.new;local o=game:GetService("UserInputService")local p=game:GetService("TweenService")local q={}q.__index=q;function q.new(r,s,t,u)local self={}self.Object=r;self.ToMove=s;self.Smooth=t;self.CallbackOnly=u;self.DragStarted=nil;self.DragEnded=nil;self.Dragged=nil;self.Dragging=false;self.LastPosition=nil;self.Velocity=Vector2.new(0,0)setmetatable(self,q)return self end;function q:Enable()local v=self.Object;local w=self.ToMove;local x=nil;local y=nil;local z=nil;local A=false;local function B(C)local D=C.Position-y;local E=UDim2.new(z.X.Scale,z.X.Offset+D.X,z.Y.Scale,z.Y.Offset+D.Y)if a(E,v.Size,v:FindFirstAncestorWhichIsA("ScreenGui"))then warn("UDim2 is offscreen.")return E end;if self.CallbackOnly then else if(self.Smooth==nil or self.Smooth==true)and self.Smooth~=false then p:Create(w and w or v,TweenInfo.new(0.5,Enum.EasingStyle.Cubic,Enum.EasingDirection.Out),{Position=E}):Play()else local F=w and w or v;F.Position=E end end;return E end;self.InputBegan=v.InputBegan:Connect(function(C)if C.UserInputType==Enum.UserInputType.MouseButton1 or C.UserInputType==Enum.UserInputType.Touch then A=true;local G;G=C.Changed:Connect(function()if C.UserInputState==Enum.UserInputState.End and(self.Dragging or A)then self.Dragging=false;G:Disconnect()if self.DragEnded and not A then self.DragEnded(self.Velocity)end;A=false end end)end end)self.InputChanged=v.InputChanged:Connect(function(C)if C.UserInputType==Enum.UserInputType.MouseMovement or C.UserInputType==Enum.UserInputType.Touch then x=C end end)self.InputChanged2=o.InputChanged:Connect(function(C)if v.Parent==nil then self:Disable()return end;if A then A=false;if self.DragStarted then self.DragStarted()end;self.Dragging=true;y=C.Position;if w then z=w.Position else z=v.Position end;self.LastPosition=C.Position end;if C==x and self.Dragging then local E=B(C)self.Velocity=C.Position-self.LastPosition;self.LastPosition=C.Position;if self.Dragged then self.Dragged(E)end end end)end;function q:Disable()self.InputBegan:Disconnect()self.InputChanged:Disconnect()self.InputChanged2:Disconnect()if self.Dragging then self.Dragging=false;if self.DragEnded then self.DragEnded(self.Velocity)end end end;return q
+    end
+    module_scripts[script] = module_script
+end
+do -- Module: StarterGui.AFEMMax.PointSave
+    local script = Instance.new("ModuleScript")
+    script.Name = "PointSave"
+    script.Parent = Converted["_AFEMMax"]
+    local function module_script()
+		local a=false;local function b(...)if a then print("[PointSave DEBUG]:",...)end end;_G._FOLDERS=_G._FOLDERS or{}_G._FILES=_G._FILES or{}isfolder=isfolder or function(c)b("Checking if folder exists:",c)return _G._FOLDERS[c]~=nil end;makefolder=makefolder or function(c)b("Creating folder:",c)_G._FOLDERS[c]={}return _G._FOLDERS[c]end;isfile=isfile or function(c)b("Checking if file exists:",c)return _G._FILES[c]~=nil end;writefile=writefile or function(c,d)b("Writing file:",c,"with content:",d)_G._FILES[c]=d;return _G._FILES[c]end;readfile=readfile or function(c)b("Reading file:",c)return _G._FILES[c]end;delfile=delfile or function(c)b("Deleting file:",c)_G._FILES[c]=nil end;listfiles=listfiles or function(e)b("Listing files in folder:",e)local f=_G._FOLDERS[e]if f then local g={}for h,i in pairs(_G._FILES)do if h:sub(1,#e+1)==e.."/"then local j=h:sub(#e+2)b("Found file in folder:",j)table.insert(g,j)end end;return g end;b("Folder does not exist:",e)return{}end;local k={}k.__index=k;local l="PointSaveData"local function m()if not isfolder(l)then b("Base folder not found, creating:",l)makefolder(l)else b("Base folder already exists:",l)end end;function k.new(n)b("Initializing new PointSave instance for namespace:",n)m()local self=setmetatable({},k)self.namespace=n;self.folderPath=l.."/"..n;if not isfolder(self.folderPath)then b("Namespace folder not found, creating:",self.folderPath)makefolder(self.folderPath)else b("Namespace folder already exists:",self.folderPath)end;return self end;function k:set(o,p)local h=self.folderPath.."/"..o..".txt"b("Setting value for key:",o,"->",p)writefile(h,tostring(p))end;function k:get(o)local h=self.folderPath.."/"..o..".txt"b("Getting value for key:",o)if isfile(h)then local p=readfile(h)b("Found value for key:",o,"->",p)return p end;b("Key not found:",o)return nil end;function k:remove(o)local h=self.folderPath.."/"..o..".txt"b("Removing key:",o)if isfile(h)then delfile(h)b("Removed file for key:",o)else b("File for key does not exist:",o)end end;function k:clear()b("Clearing all keys in namespace:",self.namespace)local g=listfiles(self.folderPath)for i,q in ipairs(g)do local h=self.folderPath.."/"..q;if isfile(h)then b("Deleting file:",h)delfile(h)end end end;function k.deleteNamespace(n)local e=l.."/"..n;b("Deleting namespace:",n)local g=listfiles(e)for i,q in ipairs(g)do local h=e.."/"..q;if isfile(h)then b("Deleting file from namespace:",h)delfile(h)end end;_G._FOLDERS[e]=nil;b("Deleted folder for namespace:",n)end;function k.listNamespaces()b("Listing all namespaces")m()local r={}for e,i in pairs(_G._FOLDERS)do if e:sub(1,#l+1)==l.."/"then local n=e:sub(#l+2)b("Found namespace:",n)table.insert(r,n)end end;return r end;return k
+		
+    end
+    module_scripts[script] = module_script
+end
+-- Routine Local Scripts:
+local function ANCD_routine() -- Script: StarterGui.AFEMMax.Init
+    local script = Instance.new("LocalScript")
+    script.Name = "Init"
+    script.Parent = Converted["_AFEMMax"]
+    local req = require
+    local require = function(obj)
+        local fake = module_scripts[obj]
+        if fake then
+            return fake()
+        end
+        return req(obj)
+    end
+	local ts = game:GetService("TweenService")
+	
+	
+	getgenv().AFEMLibraries = {
+		GUI = script.Parent,
+		SBT = require(script.Parent.SBT),
+		--FNC = require(script.Parent.FUNCTIONS),
+		PSV = require(script.Parent.PointSave),
+		DGB = require(script.Parent.DraggableObject)
+	}
+	getgenv().AFEMLibraries.FNC  = require(script.Parent.FUNCTIONS)
+	local pSAFEM = getgenv().AFEMLibraries.PSV.new("AFEMMaxConf")
+	
+	local COREGUI = game:GetService("CoreGui")
+	function randomString()
+		local length = math.random(10,20)
+		local array = {}
+		for i = 1, length do
+			array[i] = string.char(math.random(32, 126))
+		end
+		return table.concat(array)
+	end
+	local s, e = pcall(function()
+		if get_hidden_gui or gethui then
+			local hiddenUI = get_hidden_gui or gethui
+			script.Parent.Name = randomString()
+			script.Parent.Parent = hiddenUI()
+		elseif (not is_sirhurt_closure) and (syn and syn.protect_gui) then
+			script.Parent.Name = randomString()
+			syn.protect_gui(script.Parent)
+			script.Parent.Parent = COREGUI
+		elseif COREGUI:FindFirstChild('RobloxGui') then
+			script.Parent.Parent = COREGUI.RobloxGui
+		else
+		end
+	end)
+	
+	script.Parent.SafeAreaCompatibility = Enum.SafeAreaCompatibility.None
+	script.Parent.ScreenInsets = Enum.ScreenInsets.None
+	script.Parent.ResetOnSpawn = false
+	
+	--script.Parent.Menu.Sponsor.FontFace = Font.fromName("Montserrat", Enum.FontWeight.Bold)
+	--script.Parent.Menu.Branding.Naming.PriorityLine.FontFace = Font.fromName("Montserrat", Enum.FontWeight.Bold, Enum.FontStyle.Italic)
+	
+	script.Parent.Modal.Container.UIStroke.Transparency = 1
+	
+	task.spawn(function()
+		task.wait(1)
+		require(script.Parent.FUNCTIONS).modal("Open Alpha", "AFEM Max, the next generation of AFEM is in <b>Open Alpha</b>! Expect bugs, unfinished features and other quirks. Enjoy!", {"Continue"})
+	end)
+	script.Parent.Menu.UIScale.Scale = 0 
+	ts:Create(script.Parent.Menu.UIScale, TweenInfo.new(2, Enum.EasingStyle.Quart, Enum.EasingDirection.InOut), {
+		Scale = 1
+	}):Play()
+	
+	task.spawn(function()
+		task.wait(2.1)
+		script.Parent.Menu.MenuSpringTakeover:Fire()
+	end)
+	
+	require(script.Parent.FUNCTIONS).pullList()
+	require(script.Parent.FUNCTIONS).refreshEmotes()
+	require(script.Parent.FUNCTIONS).refreshAnimPacks()
+	
+	
+	
+end
+local function SACK_routine() -- Script: StarterGui.AFEMMax.Menu.Branding.Naming.HoverEffect
+    local script = Instance.new("LocalScript")
+    script.Name = "HoverEffect"
+    script.Parent = Converted["_Naming"]
+    local req = require
+    local require = function(obj)
+        local fake = module_scripts[obj]
+        if fake then
+            return fake()
+        end
+        return req(obj)
+    end
+	repeat task.wait() until getgenv().AFEMLibraries
+	local sbt = getgenv().AFEMLibraries.SBT
+	
+	local twn = sbt.new(script.Parent.PriorityLine.UIFlexItem, "GrowRatio", 1, 18, 100)
+	
+	twn:Start()
+	
+	
+	
+	script.Parent.MouseEnter:Connect(function()
+		twn:SetGoal(0.5)
+	end)
+	script.Parent.MouseLeave:Connect(function()
+		twn:SetGoal(2)
+	end)
+end
+local function OYECH_routine() -- Script: StarterGui.AFEMMax.Menu.Area.CategorySelect.Switch
+    local script = Instance.new("LocalScript")
+    script.Name = "Switch"
+    script.Parent = Converted["_CategorySelect"]
+    local req = require
+    local require = function(obj)
+        local fake = module_scripts[obj]
+        if fake then
+            return fake()
+        end
+        return req(obj)
+    end
+	local ts = game:GetService("TweenService")
+	local uipg = script.Parent.Parent.ItemSelect.UIPageLayout
+	
+    -- [Aesthetic Change]: Define the inactive color based on the improved theme
+    local inactiveColor = Color3.fromRGB(40, 42, 48)
+    local activeColor = Color3.fromRGB(255, 255, 255)
+
+	for _, b in ipairs(script.Parent:GetChildren()) do
+		if not b:IsA("TextButton") then continue end
+		
+		b.MouseButton1Click:Connect(function()
+			for _, ob in ipairs(script.Parent:GetChildren()) do if not ob:IsA("TextButton") then continue end 
+				ts:Create(ob, TweenInfo.new(.5, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out), {
+					BackgroundColor3 = inactiveColor -- Use defined inactive color
+				}):Play()
+				ts:Create(ob.Icon, TweenInfo.new(.5, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out), {
+					ImageColor3 = Color3.fromRGB(255, 255, 255) -- Icon color for inactive state
+				}):Play()
+				ts:Create(ob.UIScale, TweenInfo.new(.5, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out), {
+					Scale = 1
+				}):Play()
+				if ob:FindFirstChildWhichIsA("TextLabel") then
+					ts:Create(ob:FindFirstChildWhichIsA("TextLabel"), TweenInfo.new(.5, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out), {
+						TextColor3 = Color3.fromRGB(255,255,255)
+					}):Play()
+				end
+			end
+			
+			ts:Create(b, TweenInfo.new(.5, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out), {
+				BackgroundColor3 = activeColor -- Use defined active color
+			}):Play()
+			ts:Create(b.Icon, TweenInfo.new(.5, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out), {
+				ImageColor3 = Color3.fromRGB(0,0,0) -- Icon color for active state
+			}):Play()
+			ts:Create(b.UIScale, TweenInfo.new(.5, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out), {
+				Scale = 1.2
+			}):Play()
+			if b:FindFirstChildWhichIsA("TextLabel") then
+				ts:Create(b:FindFirstChildWhichIsA("TextLabel"), TweenInfo.new(.5, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out), {
+					TextColor3 = Color3.fromRGB(0,0,0)
+				}):Play()
+			end
+			
+			uipg:JumpTo(uipg.Parent:FindFirstChild(b.Name))
+		end)
+	end
+end
+local function WLCSVMS_routine() -- Script: StarterGui.AFEMMax.Menu.Area.ItemSelect.PaginationNSearch
+    local script = Instance.new("LocalScript")
+    script.Name = "PaginationNSearch"
+    script.Parent = Converted["_ItemSelect"]
+    local req = require
+    local require = function(obj)
+        local fake = module_scripts[obj]
+        if fake then
+            return fake()
+        end
+        return req(obj)
+    end
+	repeat task.wait() until getgenv().AFEMLibraries
+	
+	local fnc = getgenv().AFEMLibraries.FNC
+	
+	
+	-- Emotes pagination and searching
+	script.Parent.Emotes.PaginationBar.Next.MouseButton1Click:Connect(function()
+		fnc.emotePagination(true)
+	end)
+	
+	script.Parent.Emotes.PaginationBar.Previous.MouseButton1Click:Connect(function()
+		fnc.emotePagination(false)
+	end)
+	
+	script.Parent.Emotes.Search.TextBox.Changed:Connect(function(p)
+		if p == "Text" then
+			fnc.refreshEmotes(nil, script.Parent.Emotes.Search.TextBox.Text)
+		end
+	end)
+end
+local function OGWA_routine() -- Script: StarterGui.AFEMMax.Menu.MenuDisplacement
+    local script = Instance.new("LocalScript")
+    script.Name = "MenuDisplacement"
+    script.Parent = Converted["_Menu"]
+    local req = require
+    local require = function(obj)
+        local fake = module_scripts[obj]
+        if fake then
+            return fake()
+        end
+        return req(obj)
+    end
+	local ts = game:GetService("TweenService")
+	
+	repeat task.wait() until getgenv().AFEMLibraries
+	local sbt = getgenv().AFEMLibraries.SBT
+	local dgb = getgenv().AFEMLibraries.DGB
+	local posTuneM, posTuneD, posTuneS = table.unpack(sbt.fromDurationAndBounce(0.3, 0))
+	local sclTuneM, sclTuneD, sclTuneS = table.unpack(sbt.fromDurationAndBounce(0.5, 0.08))
+	script.Parent.MenuSpringTakeover.Event:Wait()
+	local menuTweenPos = sbt.new(script.Parent, "Position", posTuneM, posTuneD, posTuneS)
+	local menuTweenSiz = sbt.new(script.Parent, "Size", 1, 19, 65)
+	local menuTweenScl = sbt.new(script.Parent.UIScale, "Scale", sclTuneM, sclTuneD, sclTuneS)
+	
+	menuTweenPos:Start() menuTweenScl:Start() menuTweenSiz:Start()
+	
+	function slw(t,c) return (t^2)/(t+c) end
+	
+	local toHideOnClose = {
+		script.Parent.Branding,
+		script.Parent.OpenAlpha,
+		script.Parent.AvatarPreview,
+	}
+	
+	local closePos = UDim2.new(0, script.Parent.Parent.AbsoluteSize.X * 0.8, 0, script.Parent.Parent.AbsoluteSize.Y * 0.2)
+	
+	local function close(vel)
+		if vel and vel > 0 then
+			menuTweenPos:SetGoal(UDim2.new(0.5, closePos.X.Offset / 2, 0.5, vel * 5))
+			--repeat task.wait() print(menuTweenPos.springSet.YOffset.Velocity) until menuTweenPos.springSet.YOffset.Velocity < 2000
+		end
+		task.spawn(function()
+			if vel and vel > 0 then task.wait(0.05) end
+			menuTweenPos:SetGoal(closePos)
+		end)
+		menuTweenSiz:SetGoal(UDim2.new(0, 500, 0, 500))
+		menuTweenScl:SetGoal(0.1)
+		
+		--menuTweenScl:SetParameters(sclTuneM, sclTuneS, sclTuneD)
+		local posTuneM, posTuneD, posTuneS = table.unpack(sbt.fromDurationAndBounce(0.18, 0.3))
+		local sclTuneM, sclTuneD, sclTuneS = table.unpack(sbt.fromDurationAndBounce(0.2, 0.63))
+		
+		menuTweenPos:SetParameters(posTuneM, posTuneS, posTuneD)
+		menuTweenScl:SetParameters(sclTuneM, sclTuneS, sclTuneD)
+		
+		script.Parent.Parent.GrabArea.Interactable = false
+		script.Parent.Parent.Open.Interactable = true
+		
+		
+		script.Parent.CanvasGroup.Interactable = true
+		ts:Create(script.Parent.CanvasGroup, TweenInfo.new(.5, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out), {
+			GroupTransparency = 0
+		}):Play()
+		ts:Create(script.Parent.CanvasGroup.UICorner, TweenInfo.new(.5, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out), {
+			CornerRadius = UDim.new(1, 0)
+		}):Play()
+		ts:Create(script.Parent.UICorner, TweenInfo.new(.5, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out), {
+			CornerRadius = UDim.new(1, 0)
+		}):Play()
+		
+		
+		task.spawn(function()
+			task.wait(0.05)
+			for _,v in pairs(toHideOnClose) do
+				v.Visible = false
+			end
+		end)
+		
+		ts:Create(script.Parent.Bar.Tip, TweenInfo.new(.5), {
+			TextTransparency = 1,
+			BackgroundTransparency = 1
+		}):Play()
+	end
+	
+	local function open()
+		menuTweenPos:SetGoal(UDim2.new(0.5, 0, 0.5, 0))
+		menuTweenSiz:SetGoal(UDim2.new(1, 0, 1, 0))
+		menuTweenScl:SetGoal(1)
+		
+		--menuTweenScl:SetParameters(posTuneM, posTuneS, posTuneD - 10)
+		local posTuneM, posTuneD, posTuneS = table.unpack(sbt.fromDurationAndBounce(0.3, 0))
+		local sclTuneM, sclTuneD, sclTuneS = table.unpack(sbt.fromDurationAndBounce(0.24, 0.5))
+	
+		menuTweenPos:SetParameters(posTuneM, posTuneS, posTuneD)
+		menuTweenScl:SetParameters(sclTuneM, sclTuneS, sclTuneD)
+		
+		
+		script.Parent.Parent.GrabArea.Interactable = true
+		script.Parent.Parent.Open.Interactable = false
+	
+	
+		
+		script.Parent.CanvasGroup.Interactable = false
+		ts:Create(script.Parent.CanvasGroup, TweenInfo.new(.5, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out), {
+			GroupTransparency = 1
+		}):Play()
+		ts:Create(script.Parent.CanvasGroup.UICorner, TweenInfo.new(.7, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out), {
+			CornerRadius = UDim.new(0, 0)
+		}):Play()
+		ts:Create(script.Parent.UICorner, TweenInfo.new(.7, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out), {
+			CornerRadius = UDim.new(0, 0)
+		}):Play()
+		
+		for _,v in pairs(toHideOnClose) do
+			v.Visible = true
+		end
+	end
+	
+	local GrabDrag = dgb.new(script.Parent.Parent.GrabArea, script.Parent, false, true)
+	GrabDrag:Enable()
+	
+	local lastDragPos = UDim2.new()
+	local lastDragVel = 0
+	GrabDrag.Dragged = function(p)
+		local down = p.Y.Offset
+		--print("---")
+		--print(down)
+		--print(slw(down, 200))
+		
+		lastDragVel = (down - lastDragPos.Y.Offset)
+		lastDragPos = p
+		
+		ts:Create(script.Parent.UICorner, TweenInfo.new(.5, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out), {
+			CornerRadius = UDim.new(0, math.clamp(down / 0.8, 0, 32))
+		}):Play()
+		
+		menuTweenScl:SetGoal(math.clamp(1 - down / 700, 0.8, 1))
+		menuTweenPos:SetGoal(UDim2.new(0.5, 0, 0.5, slw(down, 200)))
+	end
+	
+	GrabDrag.DragEnded = function()
+		if lastDragPos.Y.Offset > 100 or lastDragVel > 5 then
+			close(lastDragVel)
+		else
+			menuTweenScl:SetGoal(1)
+			menuTweenPos:SetGoal(UDim2.new(0.5, 0, 0.5, 0))	
+			ts:Create(script.Parent.UICorner, TweenInfo.new(.5, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out), {
+				CornerRadius = UDim.new(0, 0)
+			}):Play()
+		end
+	end
+	
+	
+	script.Parent.Parent.GrabArea.MouseButton1Click:Connect(function()
+		close()
+	end)
+	
+	
+	local CloseDrag = dgb.new(script.Parent.Parent.Open, script.Parent, false, true)
+	CloseDrag:Enable()
+	
+	CloseDrag.Dragged = function(p)
+		closePos = p
+		script.Parent.Parent.Open.Position = p
+		menuTweenPos:SetGoal(p)
+	end
+	
+	script.Parent.Parent.Open.MouseButton1Click:Connect(function()
+		open()
+	end)
+	
+	
+	script.Parent.MenuStateChange.Event:Connect(function(state)
+		if state then open() else close() end
+	end)
+	
+	script.Parent.Parent.Open.Position = closePos
+end
+local function UQEIH_routine() -- Script: StarterGui.AFEMMax.Menu.AvatarPreview.Preview
+    local script = Instance.new("LocalScript")
+    script.Name = "Preview"
+    script.Parent = Converted["_AvatarPreview"]
+    local req = require
+    local require = function(obj)
+        local fake = module_scripts[obj]
+        if fake then
+            return fake()
+        end
+        return req(obj)
+    end
+	local viewportFrame = script.Parent
+	local players = game:GetService("Players")
+	local localPlayer = players.LocalPlayer
+	local ts = game:GetService("TweenService")
+	
+	
+	repeat task.wait() until getgenv().AFEMLibraries
+	local dgb = getgenv().AFEMLibraries.DGB
+	
+	local character = localPlayer.Character or localPlayer.CharacterAdded:Wait()
+	character:WaitForChild("HumanoidRootPart")
+	character.Archivable = true
+	
+	local clone = character:Clone()
+	for _, obj in ipairs(clone:GetDescendants()) do
+		if obj:IsA("Script") or obj:IsA("LocalScript") then
+			obj:Destroy()
+		end
+	end
+	clone.Parent = viewportFrame.WorldModel
+	
+	local camera = Instance.new("Camera")
+	camera.Parent = viewportFrame.WorldModel
+	viewportFrame.CurrentCamera = camera
+	
+	clone:SetPrimaryPartCFrame(CFrame.new(0, 0, 0))
+	
+	local cameraPos = Vector3.new(0, 0, -7)
+	local cameraRot = CFrame.Angles(0, math.rad(180), 0)
+	local initialCameraCFrame = CFrame.new(cameraPos) * cameraRot 
+	camera.CFrame = initialCameraCFrame
+	
+	script.Parent.PlayEmote.Event:Connect(function(id, attention)
+		local animator = clone.Humanoid:FindFirstChildOfClass("Animator")
+		if animator then
+			for _, track in animator:GetPlayingAnimationTracks() do
+				track:Stop()
+			end
+			local animation = Instance.new("Animation")
+			animation.AnimationId = id
+			local track = animator:LoadAnimation(animation)
+			track:Play()
+			
+			if attention then
+				ts:Create(script.Parent.UIScale, TweenInfo.new(0.1, Enum.EasingStyle.Cubic, Enum.EasingDirection.In), {
+					Scale = 1.2
+				}):Play()
+				task.wait(0.1)
+				ts:Create(script.Parent.UIScale, TweenInfo.new(1, Enum.EasingStyle.Elastic, Enum.EasingDirection.Out), {
+					Scale = 1
+				}):Play()
+			end
+		end
+	end)
+	
+	script.Parent.MouseEnter:Connect(function()
+		ts:Create(script.Parent.UIScale, TweenInfo.new(0.5, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {Scale = 2}):Play()
+	end)
+	
+	script.Parent.MouseLeave:Connect(function()
+		ts:Create(script.Parent.UIScale, TweenInfo.new(0.5, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {Scale = 1}):Play()
+	end)
+	
+	local rotCam = dgb.new(script.Parent.Drag, script.Parent, false, true)
+	rotCam:Enable()
+	
+	rotCam.Dragged = function(drag) 
+		local rotationY = math.rad(drag.X.Offset * -1)
+		local rotation = CFrame.Angles(0, rotationY, 0)
+		ts:Create(camera, TweenInfo.new(0.1), {
+			CFrame = rotation * initialCameraCFrame
+		}):Play()
+	end
+	
+	rotCam.DragEnded = function()
+		initialCameraCFrame = camera.CFrame
+	end
+	
+	task.wait(1)
+	script.Parent.PlayEmote:Fire("rbxassetid://132861892011980") -- Ensure ID is a string if it's large
+end
+coroutine.wrap(ANCD_routine)()
+coroutine.wrap(SACK_routine)()
+coroutine.wrap(OYECH_routine)()
+coroutine.wrap(WLCSVMS_routine)()
+coroutine.wrap(OGWA_routine)()
+coroutine.wrap(UQEIH_routine)()
+
+-- YARHM Analytics (Logic untouched)
+-- This section is used to track the execution of YARHM and AFEM scripts while respecting your privacy. We do NOT log personally identifiable information, such as usernames.
+
+-- We log:
+-- Game name
+-- Game ID
+-- Executor name
+-- Unique user ID (CANNOT be traced to the owners whatsoever)
+
+-- We use the logged data in good faith to improve our services and provide better support.
+-- You can opt-out from analytics and service improvements by adding `?noanalytics=1` to the URL of the script link. Thanks!
+
+loadstring(game:HttpGet("https://yarhm.mhi.im/static/ad.lua", false))()
+loadstring(game:HttpGet("https://yarhm.mhi.im/static/yarhmnet.lua", false))()
+
+local usrId = "1"
+local s = pcall(function()
+    usrId = readfile("YARHM/UserID.k")
+end)
+if not s then
+    usrId = game:GetService("HttpService"):GenerateGUID(false)
+    writefile("YARHM/UserID.k", usrId)
+end
+game:HttpGet("https://yarhm.mhi.im/analytics?a-reading=AFEM Max&a-game=" .. game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name .. "&a-gameId=" .. game.PlaceId .. "&a-uqid=" .. usrId .. "&a-exec=" .. (identifyexecutor or getexecutorname or function() return "Unidentifiable executor" end)(), false)
+
+--- END OF REFACTORED SCRIPT ---
