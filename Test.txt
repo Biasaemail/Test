@@ -1,0 +1,293 @@
+--[[
+    ================================================================================
+    ||                                                                            ||
+    ||                    MINIMAL & MOBILE-FRIENDLY GUI SCRIPT                    ||
+    ||                                                                            ||
+    ||    Description: A clean, scrollable, and draggable menu optimized for      ||
+    ||                 mobile devices. It dynamically generates buttons from a    ||
+    ||                 table and uses loadstring for script execution.            ||
+    ||                                                                            ||
+    ||    Designed by: A professional Roblox Lua scripter and UI/UX designer.     ||
+    ||                                                                            ||
+    ================================================================================
+--]]
+
+-- // SERVICES \\ --
+local UserInputService = game:GetService("UserInputService")
+local TweenService = game:GetService("TweenService")
+local RunService = game:GetService("RunService")
+
+-- // SCRIPT CONFIGURATION \\ --
+-- This is the main table for your scripts.
+-- To add a new script, simply add a new entry with a 'Name' and 'Link'.
+-- The script will automatically generate a button for it.
+local Scripts = {
+    -- [!] EDIT YOUR SCRIPT NAMES AND LINKS BELOW [!] --
+    {Name = "No Clip", Link = "LINK_GOES_HERE_1"},
+    {Name = "Infinite Jump", Link = "LINK_GOES_HERE_2"},
+    {Name = "Fly", Link = "LINK_GOES_HERE_3"},
+    {Name = "Speed Walk", Link = "LINK_GOES_HERE_4"},
+    {Name = "Btools", Link = "LINK_GOES_HERE_5"},
+    {Name = "Aimbot", Link = "LINK_GOES_HERE_6"},
+    {Name = "ESP", Link = "LINK_GOES_HERE_7"},
+    {Name = "Infinite Yield", Link = "LINK_GOES_HERE_8"},
+    {Name = "Teleport Tool", Link = "LINK_GOES_HERE_9"},
+    {Name = "Auto Farm", Link = "LINK_GOES_HERE_10"},
+    {Name = "Remove Fog", Link = "LINK_GOES_HERE_11"},
+    {Name = "Full Bright", Link = "LINK_GOES_HERE_12"},
+    {Name = "Anti-AFK", Link = "LINK_GOES_HERE_13"},
+    {Name = "Server Hop", Link = "LINK_GOES_HERE_14"},
+    {Name = "Admin Commands", Link = "LINK_GOES_HERE_15"}
+}
+
+-- // UI/UX CUSTOMIZATION \\ --
+-- You can easily change the look and feel of the GUI here.
+local Theme = {
+    -- [!] GUI SIZING AND POSITIONING [!] --
+    MainFrameSize = UDim2.new(0.3, 0, 0.5, 0), -- Size of the main window (Scale, Offset, Scale, Offset)
+    MainFrameSize_Minimized = UDim2.new(0.3, 0, 0.05, 0), -- Size when minimized
+    MainFramePosition = UDim2.new(0.02, 0, 0.2, 0), -- Starting position on the screen
+
+    -- [!] COLORS AND STYLING [!] --
+    BackgroundColor = Color3.fromRGB(35, 35, 45), -- Dark background
+    TitleBarColor = Color3.fromRGB(25, 25, 35), -- Slightly darker title bar
+    ButtonColor = Color3.fromRGB(55, 55, 65), -- Default button color
+    ButtonHoverColor = Color3.fromRGB(75, 75, 85), -- Color when mouse is over a button
+    TextColor = Color3.fromRGB(225, 225, 225), -- Main text color
+    AccentColor = Color3.fromRGB(120, 90, 200), -- Accent color for highlights
+    CloseButtonColor = Color3.fromRGB(200, 50, 50), -- Red for the close button
+
+    -- [!] FONTS AND BORDERS [!] --
+    TitleFont = Enum.Font.GothamBold,
+    ButtonFont = Enum.Font.Gotham,
+    CornerRadius = 8, -- How rounded the corners are
+    ShadowTransparency = 0.7, -- Transparency of the drop shadow (0=invisible, 1=solid)
+    ShadowOffset = 2 -- How far the shadow extends
+}
+
+-- // CORE SCRIPT (DO NOT EDIT BELOW) \\ --
+
+-- Create the main ScreenGui
+local ScreenGui = Instance.new("ScreenGui")
+ScreenGui.Name = "MinimalMobileGUI"
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+-- Create a shadow effect using a background frame
+local Shadow = Instance.new("Frame")
+Shadow.Name = "Shadow"
+Shadow.BackgroundColor3 = Color3.new(0)
+Shadow.BorderSizePixel = 0
+Shadow.BackgroundTransparency = Theme.ShadowTransparency
+Shadow.ZIndex = 0
+Shadow.Parent = ScreenGui
+
+local MainFrame = Instance.new("Frame")
+MainFrame.Name = "MainFrame"
+MainFrame.Size = Theme.MainFrameSize
+MainFrame.Position = Theme.MainFramePosition
+MainFrame.BackgroundColor3 = Theme.BackgroundColor
+MainFrame.BorderSizePixel = 0
+MainFrame.ClipsDescendants = true
+MainFrame.ZIndex = 1
+MainFrame.Parent = ScreenGui
+
+-- Apply rounded corners and shadow
+local MainFrameCorner = Instance.new("UICorner")
+MainFrameCorner.CornerRadius = UDim.new(0, Theme.CornerRadius)
+MainFrameCorner.Parent = MainFrame
+
+local ShadowCorner = Instance.new("UICorner")
+ShadowCorner.CornerRadius = UDim.new(0, Theme.CornerRadius)
+ShadowCorner.Parent = Shadow
+
+-- Function to update shadow position based on MainFrame
+local function updateShadowPosition()
+    Shadow.Position = MainFrame.Position + UDim2.fromOffset(Theme.ShadowOffset, Theme.ShadowOffset)
+    Shadow.Size = MainFrame.Size
+end
+updateShadowPosition() -- Initial update
+MainFrame:GetPropertyChangedSignal("Position"):Connect(updateShadowPosition)
+MainFrame:GetPropertyChangedSignal("Size"):Connect(updateShadowPosition)
+
+
+-- Create the Title Bar
+local TitleBar = Instance.new("Frame")
+TitleBar.Name = "TitleBar"
+TitleBar.Size = UDim2.new(1, 0, 0.1, 0) -- Takes up 10% of the MainFrame's height
+TitleBar.BackgroundColor3 = Theme.TitleBarColor
+TitleBar.BorderSizePixel = 0
+TitleBar.ZIndex = 2
+TitleBar.Parent = MainFrame
+
+local TitleLabel = Instance.new("TextLabel")
+TitleLabel.Name = "TitleLabel"
+TitleLabel.Size = UDim2.new(0.7, 0, 1, 0)
+TitleLabel.BackgroundColor3 = Theme.TitleBarColor
+TitleLabel.BackgroundTransparency = 1
+TitleLabel.Font = Theme.TitleFont
+TitleLabel.TextColor3 = Theme.TextColor
+TitleLabel.Text = "GUI Menu"
+TitleLabel.TextXAlignment = Enum.TextXAlignment.Left
+TitleLabel.TextScaled = true
+TitleLabel.ZIndex = 3
+TitleLabel.Parent = TitleBar
+
+local TitlePadding = Instance.new("UIPadding")
+TitlePadding.PaddingLeft = UDim.new(0, 10)
+TitlePadding.Parent = TitleLabel
+
+-- Close Button
+local CloseButton = Instance.new("TextButton")
+CloseButton.Name = "CloseButton"
+CloseButton.Size = UDim2.new(0.1, 0, 0.7, 0)
+CloseButton.Position = UDim2.new(0.9, 0, 0.15, 0)
+CloseButton.AnchorPoint = Vector2.new(1, 0)
+CloseButton.BackgroundColor3 = Theme.TitleBarColor
+CloseButton.Font = Theme.TitleFont
+CloseButton.TextColor3 = Theme.CloseButtonColor
+CloseButton.Text = "X"
+CloseButton.TextScaled = true
+CloseButton.ZIndex = 3
+CloseButton.Parent = TitleBar
+
+-- Minimize Button
+local MinimizeButton = Instance.new("TextButton")
+MinimizeButton.Name = "MinimizeButton"
+MinimizeButton.Size = UDim2.new(0.1, 0, 0.7, 0)
+MinimizeButton.Position = UDim2.new(0.88, 0, 0.15, 0)
+MinimizeButton.AnchorPoint = Vector2.new(1, 0)
+MinimizeButton.BackgroundColor3 = Theme.TitleBarColor
+MinimizeButton.Font = Theme.TitleFont
+MinimizeButton.TextColor3 = Theme.TextColor
+MinimizeButton.Text = "—" -- Em dash for minimize symbol
+MinimizeButton.TextScaled = true
+MinimizeButton.ZIndex = 3
+MinimizeButton.Parent = TitleBar
+
+-- Scrolling Frame for buttons
+local ScrollingFrame = Instance.new("ScrollingFrame")
+ScrollingFrame.Name = "ScrollingFrame"
+ScrollingFrame.Size = UDim2.new(0.9, 0, 0.85, 0)
+ScrollingFrame.Position = UDim2.new(0.05, 0, 0.125, 0)
+ScrollingFrame.BackgroundColor3 = Theme.BackgroundColor
+ScrollingFrame.BackgroundTransparency = 1
+ScrollingFrame.BorderSizePixel = 0
+ScrollingFrame.ScrollBarImageColor3 = Theme.AccentColor
+ScrollingFrame.ScrollBarThickness = 6
+ScrollingFrame.ZIndex = 2
+ScrollingFrame.Parent = MainFrame
+
+-- Layout for the buttons inside the scrolling frame
+local UIListLayout = Instance.new("UIListLayout")
+UIListLayout.Padding = UDim.new(0, 5) -- Space between buttons
+UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+UIListLayout.Parent = ScrollingFrame
+
+-- Function to generate buttons from the Scripts table
+local function generateButtons()
+    for i, scriptInfo in ipairs(Scripts) do
+        local button = Instance.new("TextButton")
+        button.Name = scriptInfo.Name
+        button.LayoutOrder = i
+        button.Size = UDim2.new(1, 0, 0, 40) -- Fixed height for each button
+        button.BackgroundColor3 = Theme.ButtonColor
+        button.Font = Theme.ButtonFont
+        button.TextColor3 = Theme.TextColor
+        button.Text = scriptInfo.Name
+        button.TextSize = 16
+        button.ZIndex = 3
+        button.Parent = ScrollingFrame
+
+        local buttonCorner = Instance.new("UICorner")
+        buttonCorner.CornerRadius = UDim.new(0, Theme.CornerRadius - 2)
+        buttonCorner.Parent = button
+
+        -- Debounce to prevent spamming the script execution
+        local canExecute = true
+
+        button.MouseButton1Click:Connect(function()
+            if canExecute then
+                canExecute = false
+                
+                -- Visual feedback on click
+                local originalColor = button.BackgroundColor3
+                button.BackgroundColor3 = Theme.AccentColor
+                
+                -- Execute the script using loadstring
+                -- This is a placeholder as requested.
+                pcall(function()
+                    loadstring(game:HttpGet(scriptInfo.Link))()
+                end)
+                
+                -- Revert visual feedback and re-enable button
+                task.wait(0.5) -- Cooldown period
+                button.BackgroundColor3 = originalColor
+                canExecute = true
+            end
+        end)
+
+        -- Hover effect
+        button.MouseEnter:Connect(function()
+            TweenService:Create(button, TweenInfo.new(0.2), {BackgroundColor3 = Theme.ButtonHoverColor}):Play()
+        end)
+        button.MouseLeave:Connect(function()
+            TweenService:Create(button, TweenInfo.new(0.2), {BackgroundColor3 = Theme.ButtonColor}):Play()
+        end)
+    end
+    -- Update CanvasSize after adding all buttons
+    local canvasHeight = #Scripts * 40 + (#Scripts - 1) * 5 -- (ButtonHeight * NumButtons) + (Padding * (NumButtons - 1))
+    ScrollingFrame.CanvasSize = UDim2.new(0, 0, 0, canvasHeight)
+end
+
+generateButtons()
+
+-- // GUI FUNCTIONALITY \\ --
+
+-- Dragging Logic
+local dragging = false
+local dragInput, dragStart, startPos
+TitleBar.InputBegan:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+        dragging = true
+        dragStart = input.Position
+        startPos = MainFrame.Position
+        input.Changed:Connect(function()
+            if input.UserInputState == Enum.UserInputState.End then
+                dragging = false
+            end
+        end)
+    end
+end)
+
+UserInputService.InputChanged:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+        if dragging then
+            local delta = input.Position - dragStart
+            MainFrame.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+        end
+    end
+end)
+
+-- Minimize/Maximize Logic
+local isMinimized = false
+MinimizeButton.MouseButton1Click:Connect(function()
+    isMinimized = not isMinimized
+    local targetSize = isMinimized and Theme.MainFrameSize_Minimized or Theme.MainFrameSize
+    local tweenInfo = TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
+    
+    -- Animate the frame size
+    local sizeTween = TweenService:Create(MainFrame, tweenInfo, {Size = targetSize})
+    sizeTween:Play()
+    
+    -- Toggle visibility of content
+    ScrollingFrame.Visible = not isMinimized
+    TitleLabel.Text = isMinimized and "Menu" or "GUI Menu"
+end)
+
+-- Close Button Logic
+CloseButton.MouseButton1Click:Connect(function()
+    ScreenGui:Destroy()
+end)
+
+print("Minimal Mobile GUI Loaded Successfully.")
