@@ -11,33 +11,33 @@ local humanoid = character:WaitForChild("Humanoid")
 
 -- Daftar checkpoint (urutan penting!)
 local checkpoints = {
-    Vector3.new(-417.4703369140625, 265.22259521484375, 786.6296997070312), -- CP1
-    Vector3.new(-336.950256, 404.450226, 524.400024), -- CP2
-    Vector3.new(294.808685, 446.878571, 494.531097), -- CP3
-    Vector3.new(320.641327, 507.428497, 344.058807), -- CP4
-    Vector3.new(52.3581963, 248.802551, 104.851883),  -- CP4b
-    Vector3.new(232.33493, 330.657196, -144.600006), -- CP5
-    Vector3.new(-565.315063, 868.401855, -580.33844), -- CP5b (NEW)
-    Vector3.new(-615.762634, 909.040649, -541.110474) -- Summit
+    Vector3.new(-417.4703369140625, 263.22259521484375, 786.6296997070312), -- CP1
+    Vector3.new(-336.950256, 400.450226, 524.400024), -- CP2
+    Vector3.new(294.808685, 442.878571, 494.531097), -- CP3
+    Vector3.new(320.641327, 502.428497, 344.058807), -- CP4
+    Vector3.new(52.3581963, 243.802551, 104.851883),  -- CP4b
+    Vector3.new(232.33493, 327.657196, -144.600006), -- CP5
+    Vector3.new(-565.315063, 863.401855, -580.33844), -- CP5b (NEW)
+    Vector3.new(-615.762634, 905.040649, -541.110474) -- Summit
 }
 
 -- Lokasi final walk (setelah summit)
 local finalWalkPosition = Vector3.new(-622.369629, 902.439697, -493.9375)
 
 -- === KONFIGURASI ===
-local TOTAL_DURATION = 63
+local TOTAL_DURATION = 51
 local MAX_SPEED = 24
 local MIN_SEGMENT_DURATION = 0.1
 local COMPLETION_THRESHOLD = 50 -- Jarak untuk menganggap sudah sampai checkpoint (stud)
 
 -- Durasi khusus per checkpoint (gunakan indeks checkpoint tujuan)
 local customDurations = {
-    [2] = 10,  -- CP1→CP2
+    [2] = 7,  -- CP1→CP2
     [4] = 9,   -- CP3→CP4
     [5] = 10,  -- CP4→CP4b
-    [6] = 18,  -- CP4b→CP5
-    [7] = 10,  -- CP5→CP5b (NEW)
-    [8] = 13   -- CP5b→Summit
+    [6] = 10,  -- CP4b→CP5
+    [7] = 7,  -- CP5→CP5b (NEW)
+    [8] = 8   -- CP5b→Summit
 }
 
 -- === CARI CHECKPOINT TERDEKAT ===
