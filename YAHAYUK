@@ -1,0 +1,242 @@
+-- LocalScript: Lanjutkan dari checkpoint terdekat — jangan ulang dari CP1!
+-- Total durasi: ~63 detik | Aman | Bisa dijalankan kapan saja
+
+local Players = game:GetService("Players")
+local TweenService = game:GetService("TweenService")
+local player = Players.LocalPlayer
+
+local character = player.Character or player.CharacterAdded:Wait()
+local hrp = character:WaitForChild("HumanoidRootPart")
+local humanoid = character:WaitForChild("Humanoid")
+
+-- Daftar checkpoint (urutan penting!)
+local checkpoints = {
+    Vector3.new(-417.4703369140625, 260.22259521484375, 786.6296997070312), -- CP1
+    Vector3.new(-336.950256, 400.450226, 524.400024), -- CP2
+    Vector3.new(294.808685, 443.878571, 494.531097), -- CP3
+    Vector3.new(320.641327, 502.428497, 344.058807), -- CP4
+    Vector3.new(52.3581963, 244.802551, 104.851883),  -- CP4b
+    Vector3.new(232.33493, 328.657196, -144.600006), -- CP5
+    Vector3.new(-565.315063, 862.401855, -580.33844), -- CP5b (NEW)
+    Vector3.new(-615.762634, 905.040649, -541.110474) -- Summit
+}
+
+-- Lokasi final walk (setelah summit)
+local finalWalkPosition = Vector3.new(-622.369629, 902.439697, -493.9375)
+
+-- === KONFIGURASI ===
+local TOTAL_DURATION = 63
+local MAX_SPEED = 24
+local MIN_SEGMENT_DURATION = 0.1
+local COMPLETION_THRESHOLD = 50 -- Jarak untuk menganggap sudah sampai checkpoint (stud)
+
+-- Durasi khusus per checkpoint (gunakan indeks checkpoint tujuan)
+local customDurations = {
+    [2] = 12,  -- CP1→CP2
+    [4] = 9,   -- CP3→CP4
+    [5] = 11,  -- CP4→CP4b
+    [6] = 20,  -- CP4b→CP5
+    [7] = 10,  -- CP5→CP5b (NEW)
+    [8] = 15   -- CP5b→Summit
+}
+
+-- === CARI CHECKPOINT TERDEKAT ===
+local function findNearestCheckpoint()
+    local currentPosition = hrp.Position
+    local nearestIndex = 1
+    local minDistance = (currentPosition - checkpoints[1]).Magnitude
+
+    for i = 2, #checkpoints do
+        local dist = (currentPosition - checkpoints[i]).Magnitude
+        if dist < minDistance then
+            minDistance = dist
+            nearestIndex = i
+        end
+    end
+    
+    return nearestIndex, minDistance
+end
+
+local nearestIndex, minDistance = findNearestCheckpoint()
+
+-- Tentukan checkpoint awal berdasarkan jarak threshold
+local startIndex
+if minDistance <= COMPLETION_THRESHOLD then
+    -- Sudah dekat dengan checkpoint, lanjut ke berikutnya
+    startIndex = nearestIndex + 1
+    print(string.format("📍 Dekat dengan CP%d (%.1f stud) → Mulai dari CP%d", 
+          nearestIndex, minDistance, startIndex))
+else
+    -- Belum sampai checkpoint terdekat, pergi ke sana dulu
+    startIndex = nearestIndex
+    print(string.format("📍 Belum sampai CP%d (%.1f stud) → Pergi ke CP%d dulu", 
+          nearestIndex, minDistance, startIndex))
+end
+
+-- Jika sudah lewat Summit, hentikan
+if startIndex > #checkpoints then
+    warn("✅ Kamu sudah sampai Summit! Tidak ada checkpoint berikutnya.")
+    return
+end
+
+-- === SIAPKAN SEGMENTASI ===
+local function prepareSegments()
+    local segments = {}
+    local totalDistance = 0
+    local currentPos = hrp.Position
+
+    -- Segmen pertama: dari posisi saat ini → checkpoint[startIndex]
+    local firstTarget = checkpoints[startIndex]
+    local firstDist = (currentPos - firstTarget).Magnitude
+    table.insert(segments, {
+        from = currentPos,
+        to = firstTarget,
+        distance = firstDist,
+        checkpointIndex = startIndex
+    })
+    totalDistance += firstDist
+
+    -- Lanjutkan ke checkpoint berikutnya sampai Summit
+    for i = startIndex + 1, #checkpoints do
+        local dist = (checkpoints[i-1] - checkpoints[i]).Magnitude
+        table.insert(segments, {
+            from = checkpoints[i-1],
+            to = checkpoints[i],
+            distance = dist,
+            checkpointIndex = i
+        })
+        totalDistance += dist
+    end
+    
+    return segments, totalDistance
+end
+
+local segments, totalDistance = prepareSegments()
+print(string.format("📏 Total jarak sisa: %.1f stud | %d segmen", totalDistance, #segments))
+
+-- === FUNGSI GERAK ===
+local function moveTo(position, duration)
+    duration = math.max(duration, MIN_SEGMENT_DURATION)
+    
+    -- Hitung arah pergerakan untuk orientasi yang lebih natural
+    local direction = (position - hrp.Position).Unit
+    local goalCFrame = CFrame.new(position) * CFrame.Angles(0, math.atan2(direction.X, direction.Z), 0)
+    
+    local tweenInfo = TweenInfo.new(
+        duration, 
+        Enum.EasingStyle.Linear, -- Changed to Linear for smoother constant speed
+        Enum.EasingDirection.InOut
+    )
+    
+    local tween = TweenService:Create(hrp, tweenInfo, {CFrame = goalCFrame})
+    
+    tween:Play()
+    return tween.Completed:Wait()
+end
+
+local function walkTo(position)
+    -- Set humanoid to walk to position naturally
+    humanoid:MoveTo(position)
+    
+    -- Wait until reached or timeout after 10 seconds
+    local startTime = tick()
+    local reachedConnection
+    local timeoutReached = false
+    
+    reachedConnection = humanoid.MoveToFinished:Connect(function(reached)
+        timeoutReached = reached
+    end)
+    
+    -- Wait for completion or timeout
+    while not timeoutReached and (tick() - startTime) < 10 do
+        local dist = (hrp.Position - position).Magnitude
+        if dist < 5 then
+            break
+        end
+        wait(0.1)
+    end
+    
+    if reachedConnection then
+        reachedConnection:Disconnect()
+    end
+end
+
+-- === HITUNG DURASI SEGMEN ===
+local function calculateDuration(seg, totalDist)
+    local proportionalDuration = (seg.distance / totalDist) * TOTAL_DURATION
+    local minDurationBySpeed = seg.distance / MAX_SPEED
+    local finalDuration = math.max(proportionalDuration, minDurationBySpeed)
+    
+    -- Gunakan durasi kustom jika ada
+    if customDurations[seg.checkpointIndex] then
+        finalDuration = math.max(finalDuration, customDurations[seg.checkpointIndex])
+    end
+    
+    return finalDuration
+end
+
+-- === JALANKAN ===
+task.spawn(function()
+    wait(0.5)
+    
+    -- 🔧 STABILISASI: Disable physics untuk gerakan smooth tanpa getar
+    local originalAnchor = hrp.Anchored
+    local originalCanCollide = hrp.CanCollide
+    
+    -- Simpan semua part body untuk disable collision
+    local bodyParts = {}
+    for _, part in pairs(character:GetDescendants()) do
+        if part:IsA("BasePart") and part ~= hrp then
+            table.insert(bodyParts, {part = part, canCollide = part.CanCollide})
+            part.CanCollide = false
+        end
+    end
+    
+    -- Anchor HRP untuk mencegah physics interference
+    hrp.Anchored = true
+    
+    local startTime = tick()
+    
+    -- Perjalanan melalui semua checkpoint
+    for i, seg in ipairs(segments) do
+        local duration = calculateDuration(seg, totalDistance)
+        
+        print(string.format("🚶 Segmen %d/%d → CP%d: %.1f stud dalam %.2f detik", 
+              i, #segments, seg.checkpointIndex, seg.distance, duration))
+        
+        local success, err = pcall(function()
+            moveTo(seg.to, duration)
+        end)
+        
+        if not success then
+            warn("⚠️ Error saat bergerak:", err)
+            break
+        end
+        
+        -- Tunggu sebentar di checkpoint
+        if i < #segments then
+            wait(0.2)
+        end
+    end
+    
+    local elapsedTime = tick() - startTime
+    print(string.format("✅ Sampai di Summit dalam %.1f detik!", elapsedTime))
+    
+    -- Restore physics sebelum final walk
+    hrp.Anchored = originalAnchor
+    hrp.CanCollide = originalCanCollide
+    
+    for _, data in pairs(bodyParts) do
+        data.part.CanCollide = data.canCollide
+    end
+    
+    -- Tunggu sebentar sebelum final walk
+    wait(0.5)
+    
+    -- Final walk ke lokasi akhir
+    print("🚶 Berjalan ke lokasi final...")
+    walkTo(finalWalkPosition)
+    
+    local totalTime = tick() - startTime
+    print(string.format("🎉 Perjalanan selesai! Total waktu: %.1f detik", totalTime))
+end)
