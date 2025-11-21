@@ -1,0 +1,173 @@
+getgenv().Settings = {
+    WalkSpeed = 100,
+    WalkSpeedEnabled = true,
+    InfiniteJump = true,
+    Noclip = true,
+    
+    -- Konfigurasi Anti-Cheat Spoofing
+    SpoofWalkSpeed = 16, 
+    SpoofJumpPower = 50,
+    SpoofVelocity = true -- Fitur Baru: Memalsukan kecepatan gerak fisik
+}
+
+local Players = game:GetService("Players")
+local RunService = game:GetService("RunService")
+local UserInputService = game:GetService("UserInputService")
+local LocalPlayer = Players.LocalPlayer
+
+-- // HELPER FUNCTIONS // --
+
+-- Fungsi untuk mematikan AutoJump (Mobile/Console feature yang mengganggu)
+local function DisableAutoJump(char)
+    if char then
+        local hum = char:WaitForChild("Humanoid", 5)
+        if hum then
+            hum.AutoJumpEnabled = false
+        end
+    end
+end
+
+-- // 1. ADVANCED METATABLE HOOK (SPOOFING) // --
+
+local mt = getrawmetatable(game)
+local oldIndex = mt.__index
+local oldNewIndex = mt.__newindex
+setreadonly(mt, false)
+
+-- Hook __index (READ): Saat game MEMBACA properti
+mt.__index = newcclosure(function(self, key)
+    if not checkcaller() then -- Jika script GAME yang bertanya (bukan kita)
+        
+        -- 1. Spoof WalkSpeed & JumpPower
+        if key == "WalkSpeed" and self:IsA("Humanoid") then
+            return getgenv().Settings.SpoofWalkSpeed
+        elseif key == "JumpPower" and self:IsA("Humanoid") then
+            return getgenv().Settings.SpoofJumpPower
+        end
+
+        -- 2. Spoof Velocity (Advanced)
+        -- Jika game mengecek "Seberapa cepat dia bergerak secara fisik?"
+        if getgenv().Settings.SpoofVelocity and (key == "Velocity" or key == "AssemblyLinearVelocity") and self:IsA("BasePart") and self.Name == "HumanoidRootPart" then
+            -- Ambil velocity asli
+            local realVelocity = oldIndex(self, key)
+            -- Jika kita bergerak lebih cepat dari kecepatan lari normal (16-20), kita palsukan
+            if realVelocity.Magnitude > 20 then
+                -- Kembalikan vektor yang dinormalisasi dikali 16 (Seolah-olah lari normal)
+                return realVelocity.Unit * 16
+            end
+        end
+    end
+    
+    return oldIndex(self, key)
+end)
+
+-- Hook __newindex (WRITE): Saat game MENULIS/MENGUBAH properti
+mt.__newindex = newcclosure(function(self, key, value)
+    if not checkcaller() then -- Jika script GAME yang mencoba mengubah
+        
+        -- Cegah game mengubah WalkSpeed/JumpPower kita
+        if key == "WalkSpeed" and self:IsA("Humanoid") and getgenv().Settings.WalkSpeedEnabled then
+            return -- Tolak perubahan, biarkan nilai kita tetap
+        end
+        
+        if key == "JumpPower" and self:IsA("Humanoid") and getgenv().Settings.InfiniteJump then
+            return
+        end
+    end
+    
+    return oldNewIndex(self, key, value)
+end)
+
+setreadonly(mt, true)
+
+
+-- // 2. SPEED ENFORCEMENT & PHYSICS LOOP // --
+
+RunService.RenderStepped:Connect(function()
+    local char = LocalPlayer.Character
+    if not char then return end
+    
+    local hum = char:FindFirstChild("Humanoid")
+    if not hum then return end
+
+    -- Enforce Speed
+    if getgenv().Settings.WalkSpeedEnabled then
+        -- Kita baca nilai asli menggunakan oldIndex untuk bypass hook kita sendiri
+        if oldIndex(hum, "WalkSpeed") ~= getgenv().Settings.WalkSpeed then
+            -- Kita tulis nilai paksa menggunakan oldNewIndex
+            oldNewIndex(hum, "WalkSpeed", getgenv().Settings.WalkSpeed)
+        end
+    end
+    
+    -- Enforce AutoJump OFF (Safety Check)
+    if hum.AutoJumpEnabled == true then
+        hum.AutoJumpEnabled = false
+    end
+end)
+
+
+-- // 3. INFINITE JUMP // --
+
+UserInputService.JumpRequest:Connect(function()
+	if getgenv().Settings.InfiniteJump and LocalPlayer.Character then
+		local hum = LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
+		if hum and hum:GetState() ~= Enum.HumanoidStateType.Dead then
+			hum:ChangeState(Enum.HumanoidStateType.Jumping)
+		end
+	end
+end)
+
+
+-- // 4. NOCLIP OPTIMIZED // --
+
+local function NoclipLoop()
+    local char = LocalPlayer.Character
+    if char and getgenv().Settings.Noclip then
+        -- Menggunakan GetDescendants agar aksesoris/sepatu tidak nyangkut
+        for _, part in ipairs(char:GetDescendants()) do
+            if part:IsA("BasePart") and part.CanCollide == true then
+                part.CanCollide = false
+            end
+        end
+    end
+end
+RunService.Stepped:Connect(NoclipLoop)
+
+
+-- // 5. EVENT LISTENERS // --
+
+-- Saat pemain respawn
+LocalPlayer.CharacterAdded:Connect(function(char)
+    -- Terapkan ulang AutoJump Disable
+    DisableAutoJump(char)
+    
+    -- Speed akan otomatis ter-set oleh RenderStepped loop
+end)
+
+-- Terapkan untuk karakter saat ini (jika sudah spawn saat script dijalankan)
+if LocalPlayer.Character then
+    DisableAutoJump(LocalPlayer.Character)
+end
+
+-- // 6. KEYBINDS // --
+
+UserInputService.InputBegan:Connect(function(input, gProcessed)
+    if gProcessed then return end
+    
+    if input.KeyCode == Enum.KeyCode.K then
+        getgenv().Settings.WalkSpeedEnabled = not getgenv().Settings.WalkSpeedEnabled
+        print("Speed Hack:", getgenv().Settings.WalkSpeedEnabled)
+        
+        -- Reset ke normal jika dimatikan
+        if not getgenv().Settings.WalkSpeedEnabled and LocalPlayer.Character then
+            local hum = LocalPlayer.Character:FindFirstChild("Humanoid")
+            if hum then oldNewIndex(hum, "WalkSpeed", 16) end
+        end
+        
+    elseif input.KeyCode == Enum.KeyCode.N then
+        getgenv().Settings.Noclip = not getgenv().Settings.Noclip
+        print("Noclip:", getgenv().Settings.Noclip)
+    end
+end)
+
+warn("Logic Loaded V2. Velocity Spoofing Active.")
