@@ -1,0 +1,271 @@
+-- [[ ⚡ ULT Teleport V5 (Titan Map Streaming Fix) ]]
+-- Special Logic for: StreamingEnabled, Large Maps & Low Memory Devices
+
+local Players = game:GetService("Players")
+local Workspace = game:GetService("Workspace")
+local RunService = game:GetService("RunService")
+local UserInputService = game:GetService("UserInputService")
+local TweenService = game:GetService("TweenService")
+
+local LocalPlayer = Players.LocalPlayer
+local Camera = Workspace.CurrentCamera
+
+-- // KONFIGURASI
+local CONFIG = {
+    UI_COLOR = Color3.fromRGB(20, 20, 25),
+    ACCENT_COLOR = Color3.fromRGB(0, 255, 128), -- Hijau Neon agar lebih fresh
+    TEXT_COLOR = Color3.fromRGB(255, 255, 255),
+    -- Timeout lama (25 detik) untuk map super besar
+    STREAMING_TIMEOUT = 25, 
+}
+
+-- // UI VARIABLES
+local isMinimized = false
+local viewingTarget = nil
+local tpConnection = nil
+local isTeleporting = false
+
+-- // SCREEN GUI SETUP (Reset jika sudah ada)
+local UI_NAME = "UltMobileTeleport_V5_Fix"
+if game:GetService("CoreGui"):FindFirstChild(UI_NAME) then game:GetService("CoreGui")[UI_NAME]:Destroy() end
+if LocalPlayer.PlayerGui:FindFirstChild(UI_NAME) then LocalPlayer.PlayerGui[UI_NAME]:Destroy() end
+
+local ScreenGui = Instance.new("ScreenGui")
+ScreenGui.Name = UI_NAME
+-- Pcall untuk menghindari error di executor tertentu
+pcall(function() ScreenGui.Parent = game:GetService("CoreGui") end)
+if not ScreenGui.Parent then ScreenGui.Parent = LocalPlayer:WaitForChild("PlayerGui") end
+
+-- // UTILITIES UI
+local function createRound(inst, r)
+    local c = Instance.new("UICorner"); c.CornerRadius = UDim.new(0, r); c.Parent = inst
+end
+local function createStroke(inst, col, th)
+    local s = Instance.new("UIStroke"); s.Color = col; s.Thickness = th; s.Parent = inst
+end
+
+-- // --- CORE GUI CONSTRUCTION (Sama seperti v4 tapi dioptimalkan) --- //
+local MainFrame = Instance.new("Frame")
+MainFrame.Name = "Main"
+MainFrame.Size = UDim2.new(0, 220, 0, 300) 
+MainFrame.Position = UDim2.new(0.05, 0, 0.3, 0)
+MainFrame.BackgroundColor3 = CONFIG.UI_COLOR
+MainFrame.Active = true
+MainFrame.Draggable = true
+MainFrame.Parent = ScreenGui
+createRound(MainFrame, 12)
+createStroke(MainFrame, Color3.fromRGB(60,60,70), 1.5)
+
+-- Header
+local Header = Instance.new("Frame")
+Header.Size = UDim2.new(1,0,0,35)
+Header.BackgroundTransparency = 1
+Header.Parent = MainFrame
+local Title = Instance.new("TextLabel")
+Title.Text = "⚡ HYPER TP V5"
+Title.Font = Enum.Font.GothamBlack
+Title.TextColor3 = CONFIG.ACCENT_COLOR
+Title.TextSize = 14
+Title.Size = UDim2.new(0.6,0,1,0)
+Title.Position = UDim2.new(0.05,0,0,0)
+Title.BackgroundTransparency = 1
+Title.TextXAlignment = Enum.TextXAlignment.Left
+Title.Parent = Header
+local MinBtn = Instance.new("TextButton")
+MinBtn.Text = "—"
+MinBtn.TextSize = 18; MinBtn.Font = Enum.Font.GothamBold; MinBtn.TextColor3 = Color3.new(0.8,0.8,0.8)
+MinBtn.Size = UDim2.new(0,35,1,0); MinBtn.Position = UDim2.new(0.82,0,0,0); MinBtn.BackgroundTransparency = 1
+MinBtn.Parent = Header
+
+-- List Container
+local ListFrame = Instance.new("Frame")
+ListFrame.Size = UDim2.new(0.9,0,0.68,0); ListFrame.Position = UDim2.new(0.05,0,0.13,0)
+ListFrame.BackgroundColor3 = Color3.fromRGB(15,15,18); ListFrame.Parent = MainFrame
+createRound(ListFrame, 8)
+local Scroll = Instance.new("ScrollingFrame")
+Scroll.Size = UDim2.new(1,-6,1,-6); Scroll.Position = UDim2.new(0,3,0,3)
+Scroll.BackgroundTransparency = 1; Scroll.ScrollBarThickness = 3; Scroll.Parent = ListFrame
+local UIList = Instance.new("UIListLayout")
+UIList.SortOrder = Enum.SortOrder.LayoutOrder; UIList.Padding = UDim.new(0, 4); UIList.Parent = Scroll
+
+-- Search & Status
+local SearchBox = Instance.new("TextBox")
+SearchBox.PlaceholderText = "🔍 Cari Player..."
+SearchBox.Size = UDim2.new(0.9,0,0,28); SearchBox.Position = UDim2.new(0.05,0,0.84,0)
+SearchBox.BackgroundColor3 = Color3.fromRGB(35,35,40); SearchBox.TextColor3 = Color3.new(1,1,1)
+SearchBox.TextSize = 12; SearchBox.Font = Enum.Font.Gotham; SearchBox.Parent = MainFrame
+createRound(SearchBox, 6)
+
+local Status = Instance.new("TextLabel")
+Status.Size = UDim2.new(1,0,0,20); Status.Position = UDim2.new(0,0,0.95,0)
+Status.BackgroundTransparency = 1; Status.TextColor3 = Color3.fromRGB(255, 200, 50)
+Status.TextSize = 10; Status.Font = Enum.Font.GothamBold; Status.Text = ""; Status.Parent = MainFrame
+
+-- Minimize Icon
+local Icon = Instance.new("TextButton")
+Icon.Size = UDim2.new(0,45,0,45); Icon.Position = UDim2.new(0,10,0.5,0)
+Icon.BackgroundColor3 = CONFIG.UI_COLOR; Icon.Text = "🚀"; Icon.TextSize = 24
+Icon.Visible = false; Icon.Draggable = true; Icon.Parent = ScreenGui
+createRound(Icon, 12); createStroke(Icon, CONFIG.ACCENT_COLOR, 2)
+
+-- // ============================================== //
+-- //      LOGIC TELEPORT TINGKAT TINGGI (V5)       //
+-- // ============================================== //
+
+local function setStatus(text, color)
+    Status.Text = text
+    Status.TextColor3 = color or Color3.fromRGB(255, 200, 50)
+end
+
+-- Mendapatkan Karakter kita dengan aman
+local function getChar()
+    return LocalPlayer.Character or LocalPlayer.CharacterAdded:Wait()
+end
+
+-- Mendapatkan Root Part (HRP)
+local function getRoot(char)
+    return char:FindFirstChild("HumanoidRootPart") or char:FindFirstChild("Torso") or char:FindFirstChild("UpperTorso")
+end
+
+-- Logika Utama
+local function executeAdvancedTP(targetPlayer)
+    if isTeleporting then return end -- Mencegah spam klik
+    
+    local myChar = getChar()
+    local myRoot = getRoot(myChar)
+    if not myRoot then setStatus("❌ Karaktermu belum load!", Color3.fromRGB(255,0,0)); return end
+    
+    isTeleporting = true
+    
+    -- Cleanup koneksi lama
+    if tpConnection then tpConnection:Disconnect() tpConnection = nil end
+    
+    local startTime = tick()
+    local attempts = 0
+    
+    setStatus("⏳ Inisialisasi Streaming...", Color3.fromRGB(0,255,255))
+    
+    tpConnection = RunService.Heartbeat:Connect(function()
+        -- 1. Safety Check (Timeout)
+        if tick() - startTime > CONFIG.STREAMING_TIMEOUT then
+            setStatus("❌ Timeout: Target terlalu jauh/keluar.", Color3.fromRGB(255,50,50))
+            isTeleporting = false
+            LocalPlayer.ReplicationFocus = nil -- Reset focus
+            if tpConnection then tpConnection:Disconnect() end
+            return
+        end
+
+        local targetChar = targetPlayer.Character
+        local targetRoot = targetChar and getRoot(targetChar)
+        
+        -- Bekukan karakter kita agar tidak jatuh ke void saat menunggu map loading
+        if myRoot then
+            myRoot.Velocity = Vector3.new(0,0,0)
+            myRoot.AssemblyLinearVelocity = Vector3.new(0,0,0)
+        end
+
+        -- KONDISI 1: Target Sepenuhnya Terload (HRP Ada)
+        if targetChar and targetRoot then
+            -- Langsung TP ke posisi mereka
+            pcall(function()
+                myChar:PivotTo(targetRoot.CFrame * CFrame.new(0, 4, 0)) 
+            end)
+
+            -- Cek jarak (apakah sudah sampai?)
+            if (myRoot.Position - targetRoot.Position).Magnitude < 15 then
+                setStatus("✅ TELEPORT SUKSES!", Color3.fromRGB(50,255,50))
+                LocalPlayer.ReplicationFocus = nil
+                isTeleporting = false
+                tpConnection:Disconnect()
+                
+                -- Reset Kamera
+                Camera.CameraSubject = myChar:FindFirstChild("Humanoid")
+            else
+                 setStatus("🚀 Syncing Posisi...", Color3.fromRGB(100,255,100))
+            end
+            
+        -- KONDISI 2: Target Karakter Ada, Tapi Bagian Tubuh Kosong (StreamingEnabled Case)
+        elseif targetChar then
+            setStatus("📡 Downloading Map Target...", Color3.fromRGB(255,150,0))
+            
+            -- INI KUNCINYA: Paksa server kirim data area itu ke kita
+            LocalPlayer.ReplicationFocus = targetChar
+            
+            -- Pindah kamera ke target membantu trigger render chunk
+            Camera.CameraSubject = targetChar
+            
+            -- Kita teleport diri kita "di dekat" mereka berdasarkan update terakhir (jika ada)
+            -- atau tetap beku sampai part muncul
+            
+        -- KONDISI 3: Karakter Benar-Benar NIL (Sangat Jauh / Belum Spawn)
+        else
+            setStatus("🔎 Mencari Sinyal Karakter...", Color3.fromRGB(200,200,200))
+            -- Kita tidak bisa berbuat banyak di sini selain menunggu server mereplikasi karakter objek
+            -- Biasanya instance Karakter dikirim lebih dulu sebelum children-nya
+        end
+    end)
+end
+
+-- // LIST UPDATE SYSTEM //
+local function updateList()
+    -- Bersihkan list
+    for _, v in pairs(Scroll:GetChildren()) do if v:IsA("Frame") then v:Destroy() end end
+    
+    local txt = SearchBox.Text:lower()
+    local players = Players:GetPlayers()
+    
+    -- Urutkan player (diri sendiri skip)
+    for _, plr in ipairs(players) do
+        if plr ~= LocalPlayer then
+            if txt == "" or plr.DisplayName:lower():match(txt) or plr.Name:lower():match(txt) then
+                
+                local Row = Instance.new("Frame")
+                Row.Size = UDim2.new(1,0,0,32) -- Sedikit lebih besar agar mudah disentuh mobile
+                Row.BackgroundColor3 = Color3.fromRGB(25,25,30)
+                Row.Parent = Scroll
+                createRound(Row, 6)
+
+                local NameLab = Instance.new("TextLabel")
+                NameLab.Text = plr.DisplayName
+                NameLab.TextColor3 = CONFIG.TEXT_COLOR
+                NameLab.TextSize = 11; NameLab.Font = Enum.Font.GothamSemibold
+                NameLab.Size = UDim2.new(0.55,0,1,0); NameLab.Position = UDim2.new(0.04,0,0,0)
+                NameLab.TextXAlignment = Enum.TextXAlignment.Left; NameLab.BackgroundTransparency = 1
+                NameLab.TextTruncate = Enum.TextTruncate.AtEnd
+                NameLab.Parent = Row
+
+                -- Tombol TP
+                local TpBtn = Instance.new("TextButton")
+                TpBtn.Text = "TP ⚡"
+                TpBtn.BackgroundColor3 = CONFIG.ACCENT_COLOR
+                TpBtn.TextColor3 = Color3.new(0,0,0) -- Hitam biar kontras dengan hijau
+                TpBtn.Font = Enum.Font.GothamBold; TpBtn.TextSize = 10
+                TpBtn.Size = UDim2.new(0,40,0,24)
+                TpBtn.Position = UDim2.new(0.78,0,0.12,0)
+                TpBtn.Parent = Row
+                createRound(TpBtn, 4)
+                
+                TpBtn.MouseButton1Click:Connect(function()
+                   executeAdvancedTP(plr)
+                end)
+            end
+        end
+    end
+    Scroll.CanvasSize = UDim2.new(0,0,0,UIList.AbsoluteContentSize.Y + 20)
+end
+
+-- // EVENT HANDLERS & MINIMIZE //
+SearchBox:GetPropertyChangedSignal("Text"):Connect(updateList)
+Players.PlayerAdded:Connect(updateList)
+Players.PlayerRemoving:Connect(updateList)
+
+MinBtn.MouseButton1Click:Connect(function()
+    MainFrame.Visible = false; Icon.Visible = true; isMinimized = true
+end)
+Icon.MouseButton1Click:Connect(function()
+    MainFrame.Visible = true; Icon.Visible = false; isMinimized = false
+end)
+
+updateList()
+setStatus("✅ System V5 Active")
+print("Titan Streaming Fix Loaded")
